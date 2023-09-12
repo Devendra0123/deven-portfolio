@@ -1,7 +1,6 @@
 import React from "react";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
-import Image from "next/image";
 import { shortInfo } from "@/data/shortInfo";
 import ShortInfoCard from "../Card/ShortInfoCard";
 import SvgPath2 from "../SvgPath/SvgPath2";

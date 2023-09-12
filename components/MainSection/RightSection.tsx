@@ -7,20 +7,23 @@ const RightSection = () => {
       style={{
         zIndex: 1,
       }}
-      className="w-[45%] h-[70vh] relative flex justify-center items-center"
+      className="w-[45%] h-[470px] relative flex justify-center items-center"
     >
       <div className="absolute top-[55%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] w-[300px] h-[300px] bg-yellow1 rounded-lg rotate-45 "></div>
       <div className="absolute top-[57%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] w-[300px] h-[300px] bg-gray1 opacity-[83%] rounded-lg rotate-45 "></div>
-      <div className="absolute bottom-[50px] left-[-100px]">
+      <div className="absolute top-[0%] left-[50%] transform -translate-x-[50%]">
         {/*...Personal Image...*/}
-        <div className="w-[300px] h-[300px] absolute -top-[100%] left-[100%] ">
+        <div className="w-[300px] h-[300px] relative">
           <Image
             src="/person.png"
             alt=""
-           fill
+            fill
             className="object-contain"
           />
         </div>
+      </div>
+
+      <div className="absolute left-[-100px] bottom-[0px]">
         {/*...Arrow Icon...*/}
         <div className="relative w-[300px] h-[200px]">
           <Image
