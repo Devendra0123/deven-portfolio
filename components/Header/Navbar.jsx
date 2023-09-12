@@ -24,23 +24,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-
-      <svg
-          className="bg-gray-700 opacity-[25%] flex items-center justify-center"
-          width="100%"
-          height="1"
-          id="visual"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="-2 -2 4 8"
-        >
-          <path
-            d="M 0 0 H 21"
-            stroke="#000"
-            strokeWidth="0.01"
-            fill="none"
-          />
-        </svg>
-
     </div>
   );
 };

@@ -1,12 +1,10 @@
-import CurvePathAnimate from "@/components/CurvePathAnimate";
-import DoublePathMove from "@/components/DoublePathMove";
-import IconAlongPath from "@/components/IconAlongPath";
 import MainSection from "@/components/MainSection";
-import TwoCircleAnimate from "@/components/TwoCircleAnimate";
+import SvgPath from "@/components/SvgPath/SvgPath";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-[90vh] flex flex-col">
+    <main className="mt-[-20px] relative max-w-full overflow-hidden min-h-[90vh] flex flex-col">
+      <SvgPath />
       <MainSection />
     </main>
   );
