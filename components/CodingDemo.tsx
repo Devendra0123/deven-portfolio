@@ -6,7 +6,7 @@ const CodingDemo = () => {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
 
-  const description = "Let's make it interactive. See the magic of tailwind.";
+  const description = "Let&apos;s make it interactive. See the magic of tailwind.";
 
   useEffect(() => {
 
@@ -48,7 +48,7 @@ const CodingDemo = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  });
 
   return (
     <div className="w-full flex justify-evenly gap-[50px]">
@@ -58,9 +58,9 @@ const CodingDemo = () => {
           <span> </span>
           <span className="text-primaryBlue">className</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span className="text-amber-500">{text1}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span>{">"}</span>
         </span>
 
@@ -69,41 +69,41 @@ const CodingDemo = () => {
           <span> </span>
           <span className="text-primaryBlue">{"className"}</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span className="text-amber-500">{text2}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <br />
           <span className="text-primaryBlue ml-[30px]">{"src"}</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span>
             {"/devendra.png"}
           </span>
-          <span>{"'"}</span>
+          <span>{"&apos;"}</span>
           <span>{" "}</span>
           <span className="text-primaryBlue ml-[5px]">{"alt"}</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span>
             {"image"}
           </span>
-          <span>{"'"}</span>
+          <span>{"&apos;"}</span>
           <br />
           <span className="text-primaryBlue ml-[30px]">{"width"}</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span>
             {"100"}
           </span>
-          <span>{"'"}</span>
+          <span>{"&apos;"}</span>
           <span>{" "}</span>
           <span className="text-primaryBlue ml-[5px]">{"height"}</span>
           <span>{`=`}</span>
-          <span>{`'`}</span>
+          <span>{`&apos;`}</span>
           <span>
             {"100"}
           </span>
-          <span>{"'"}</span>
+          <span>{"&apos;"}</span>
           <span>{" "}</span>
           <span>{"/>"}</span>
         </span>
@@ -128,7 +128,7 @@ const CodingDemo = () => {
         }} className="w-max h-max p-[20px] rounded-lg flex flex-col items-center text-center">
           <Image src="/person.png" alt="person" width={100} height={100} className="object-contain" />
           <p>
-            Let's make it interactive.<br /> See the magic of tailwind.
+            Let&apos;s make it interactive.<br /> See the magic of tailwind.
           </p>
         </div>
 
