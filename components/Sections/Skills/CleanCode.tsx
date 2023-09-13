@@ -1,9 +1,10 @@
 "use client";
 import SkillCard from "@/components/Card/SkillCard";
+import CodingDemo from "@/components/CodingDemo";
 import React, { useEffect, useState } from "react";
 
 const CleanCode = () => {
-    const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const cleanCodeSection = document.querySelector("#cleanCodeSection");
@@ -11,9 +12,9 @@ const CleanCode = () => {
     const handleElementOnScroll = () => {
       if (cleanCodeSection) {
         const rect = cleanCodeSection.getBoundingClientRect();
-        console.log(rect.top)
+        console.log(rect.top);
         const isVisible = rect.top <= 400 && rect.bottom <= window.innerHeight;
-        setVisible(isVisible)
+        setVisible(isVisible);
       }
     };
     if (cleanCodeSection) {
@@ -29,9 +30,14 @@ const CleanCode = () => {
       <SkillCard
         text="Clean Code  &&  Best Practices"
         icon="/code.png"
-        textStyle="font-bold text-[21px]"
+        titleStyle="font-bold text-[21px]"
+        descriptionStyle=""
         visibility={visible}
       />
+
+      <div className="ml-[100px] mt-[50px] ">
+        <CodingDemo />
+      </div>
     </div>
   );
 };
