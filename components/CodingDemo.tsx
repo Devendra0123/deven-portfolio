@@ -6,11 +6,13 @@ const CodingDemo = () => {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
 
-  const divstyle = ["w-full flex items-center justify-center mt-[10px]"];
-  const imgStyle = ["w-full flex items-center justify-center mt-[10px]"];
   const description = "Let's make it interactive. See the magic of tailwind.";
 
   useEffect(() => {
+
+    const divstyle = ["w-full flex items-center justify-center mt-[10px]"];
+    const imgStyle = ["w-full flex items-center justify-center mt-[10px]"];
+
     let currentIndex = 0;
     let currentText = "";
     const interval = setInterval(() => {
@@ -46,7 +48,7 @@ const CodingDemo = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [text1, text2, imgStyle, divstyle]);
+  }, []);
 
   return (
     <div className="w-full flex justify-evenly gap-[50px]">
