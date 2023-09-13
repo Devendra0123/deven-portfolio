@@ -55,7 +55,6 @@ const SvgPath2 = () => {
       height="1"
       id="visual"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="-2 -2 4 8"
     >
       <path
         ref={pathRef1}
