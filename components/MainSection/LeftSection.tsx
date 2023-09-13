@@ -31,7 +31,7 @@ const LeftSection = () => {
                 className="ml-[30px] "
               />
             </div>
-            <p className="ml-[50px] font-bold">{`develper(Javascript)`}</p>
+            <p className="ml-[50px] font-bold">{`developer(Javascript)`}</p>
           </div>
         </div>
         <div className="mt-[25px] ml-[50px] flex items-center gap-[10px]">

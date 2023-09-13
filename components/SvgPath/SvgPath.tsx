@@ -53,12 +53,12 @@ const SvgPath = () => {
         id="visual"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 -0.3 23 8"
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: "100%", height: "470px" }}
       >
         <path
           ref={pathRef1}
           className="opacity-[25%]"
-          d="M 0 0 H 23 H 2 V 5.2 H 5 H 2 V 0 H 12 V 7.6 V 0 H 21 V 5 H 19"
+          d="M 0 0 H 23 H 2 V 5.1 H 5 H 2 V 0 H 12 V 7.2 V 0 H 21 V 5 H 19"
           stroke="#000"
           strokeWidth="0.01"
           fill="none"

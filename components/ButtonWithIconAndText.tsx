@@ -8,10 +8,9 @@ interface Props {
 const ButtonWithIconAndText = ({ icon, text, textStyle }: Props) => {
   return (
     <div className="flex items-center cursor-pointer">
-      <Image src={icon} alt="" width={60} height={60} className="" />
-      <p className={`${textStyle}`}>
-        {text}
-      </p>
+      {icon && <Image src={icon} alt="" width={60} height={60} className="" />}
+
+      <p className={`${textStyle}`}>{text}</p>
     </div>
   );
 };
