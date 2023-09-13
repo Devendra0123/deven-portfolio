@@ -72,8 +72,8 @@ const SvgPath2 = () => {
       />
       <circle
         ref={circle2Ref}
-        cx="0" // Initial position (adjust as needed)
-        cy="0" // Initial position (adjust as needed)
+        cx="2" // Initial position (adjust as needed)
+        cy="2" // Initial position (adjust as needed)
         r="0.05" // Radius of the circle
         fill="orange" // Circle color
       />
