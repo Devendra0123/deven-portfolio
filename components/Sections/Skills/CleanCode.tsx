@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 const CleanCode = () => {
   const [visible, setVisible] = useState(false);
-
+const [codingDemoVisibility, setCodingDemoVisibility] = useState(false)
   useEffect(() => {
     const cleanCodeSection = document.querySelector("#cleanCodeSection");
 
@@ -15,6 +15,9 @@ const CleanCode = () => {
         console.log(rect.top);
         const isVisible = rect.top <= 400 && rect.bottom <= window.innerHeight;
         setVisible(isVisible);
+
+        const isCodingDemoVisible = rect.top <= 300 && rect.bottom <= window.innerHeight;
+        setCodingDemoVisibility(isCodingDemoVisible)
       }
     };
     if (cleanCodeSection) {
@@ -36,7 +39,7 @@ const CleanCode = () => {
       />
 
       <div className="ml-[100px] mt-[50px] ">
-        <CodingDemo />
+        <CodingDemo visibility={codingDemoVisibility} />
       </div>
     </div>
   );
