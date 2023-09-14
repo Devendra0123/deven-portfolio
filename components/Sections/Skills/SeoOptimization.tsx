@@ -37,7 +37,7 @@ const SeoOptimization = () => {
       />
 
       <div className="relative ml-[100px] mt-[50px] ">
-        <SeoAnimation />
+      
       </div>
     </div>
   );
