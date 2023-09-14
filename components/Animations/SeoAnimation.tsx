@@ -3,16 +3,16 @@ import React from "react";
 const SeoAnimation = () => {
   return (
     <div
-      style={{
-        width: "100%",
-        height: "auto",
-        zIndex: 0,
-      }}
+      className=""
     >
       <svg
+        style={{
+          width: "max-content",
+          height: "400px"
+        }}
         className=""
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="-15 -15 20 20" // Adjusted viewBox to fit the entire path
+        viewBox="-30 -30 40 40" // Adjusted viewBox to fit the entire path
         preserveAspectRatio="xMidYMax meet"
       >
         <path

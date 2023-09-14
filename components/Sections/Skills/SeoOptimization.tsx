@@ -36,8 +36,8 @@ const SeoOptimization = () => {
         description="Having understood about the need for any website to appear on the top in the search engine, I prioritize in optimizing images, decreasing loading time, adding meta tags and many more."
       />
 
-      <div className="ml-[100px] mt-[50px] ">
-
+      <div className="relative ml-[100px] mt-[50px] ">
+        <SeoAnimation />
       </div>
     </div>
   );
