@@ -20,7 +20,7 @@ const [buttonStyle, setButtonStyle] = useState({
         (document.documentElement.scrollHeight -
           document.documentElement.clientHeight);
 
-      const drawLength = length * scrollPercentage;
+      const drawLength = length * scrollPercentage * 1.2;
 
       svgPath.style.strokeDashoffset = length - drawLength;
 

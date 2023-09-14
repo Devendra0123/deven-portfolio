@@ -1,27 +1,38 @@
+import { seoPoints } from "@/data/seoPoints";
+import Image from "next/image";
 import React from "react";
 
 const SeoAnimation = () => {
   return (
     <div
-      className=""
+      className=" w-full h-[50vh]"
     >
-      <svg
-        style={{
-          width: "max-content",
-          height: "400px"
-        }}
-        className=""
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="-30 -30 40 40" // Adjusted viewBox to fit the entire path
-        preserveAspectRatio="xMidYMax meet"
-      >
-        <path
-          d="M 0 0 Q -1 -1 -2 -1 Q -3 -1 -4 0 Q -5 1 -6 1 Q -10 1 -13 -1 Q -13 -1 -13 -1 Q -14 -2 -15 -2 Q -14 -2 -13 -1 Q -13 -3 -14 -4 Q -13 -3 -13 -1 Q -11 -2 -11 -4 Q -11 -2 -13 -1 Q -10 1 -6 1 Q -5 1 -4 0 Q -3 -1 -2 -1 Q -1 -1 0 0 Q -1 -2 0 -4 Q 1 -5 1 -6 Q 0 -8 0 -10 Q 0 -8 1 -6 Q -1 -7 -3 -9 Q -1 -7 1 -6 Q 2 -8 2 -10"
-          stroke="#DD9915"
-          strokeWidth="0.05"
-          fill="none"
-        />
-      </svg>
+      <div className="w-full flex items-center gap-[60px] flex-wrap">
+        {
+          seoPoints?.map(({ title, icon }: any, index) => (
+            <div key={index} className="w-max relative">
+               <div className={`w-[50px] h-[50px] ${index % 2 == 0 ? "bg-primaryBlue" : "bg-yellow1"} z-[-1] absolute left-[50%] right-[50%] transform -translate-x-[50%] -translate-y-[50%] rounded-full z-[-1]`} />
+            <div style={{
+              background: "rgba(255, 255, 255, 0.2)",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              transition: "all 0.3s ease", // Add a transition for flex-direction
+            }} className={`relative w-max ${index % 2 != 0 ? "text-primaryBlue" : "text-yellow1"} flex items-center gap-[10px] px-[20px] py-[10px]`}>
+              {icon}
+              <button  className="text-black z-10">
+            {title}
+              </button>
+            </div>
+            </div>
+          ))
+        }
+      </div>
+
     </div>
   );
 };

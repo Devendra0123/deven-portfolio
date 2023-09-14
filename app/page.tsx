@@ -9,7 +9,7 @@ export default function Home() {
     <main className="mt-[-20px] relative max-w-full overflow-hidden min-h-[90vh] flex flex-col">
       <SvgPath />
       <MainSection />
-      <div className="relative w-full min-h-[100vh]">
+      <div className="relative w-full">
         <div className="w-full h-full absolute top-0 right-[2.5%] mt-[-30px]">
           <SvgPath3 />
         </div>
