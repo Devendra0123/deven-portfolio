@@ -7,11 +7,19 @@ interface Props {
   titleStyle?: string;
   descriptionStyle?: string;
   visibility?: boolean;
+  description?: string;
 }
 
-const SkillCard = ({ icon, text, titleStyle, descriptionStyle, visibility }: Props) => {
+const SkillCard = ({
+  icon,
+  text,
+  titleStyle,
+  descriptionStyle,
+  visibility,
+  description,
+}: Props) => {
   return (
-    <div className="w-full flex gap-[10px] cursor-pointer">
+    <div className="z-10 w-full flex gap-[10px] cursor-pointer">
       {icon && (
         <div
           className={`${
@@ -43,8 +51,7 @@ const SkillCard = ({ icon, text, titleStyle, descriptionStyle, visibility }: Pro
               : "opacity-0 transform translate-y-[20px]"
           } transition delay-150 duration-300 ease-out ${descriptionStyle} text-start`}
         >
-          I follow the best coding practices and maintain a clean code with
-          proper comment. This makes code scalable and easy to understand.
+          {description}
         </p>
       </div>
     </div>

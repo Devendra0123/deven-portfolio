@@ -1,5 +1,6 @@
 import MainSection from "@/components/MainSection";
 import CleanCode from "@/components/Sections/Skills/CleanCode";
+import SeoOptimization from "@/components/Sections/Skills/SeoOptimization";
 import SvgPath from "@/components/SvgPath/SvgPath";
 import SvgPath3 from "@/components/SvgPath/SvgPath3";
 
@@ -13,8 +14,9 @@ export default function Home() {
           <SvgPath3 />
         </div>
 
-        <div className="mt-[200px] px-[65px]">
+        <div className="mt-[200px] px-[65px] flex flex-col gap-[100px]">
           <CleanCode />
+          <SeoOptimization />
         </div>
       </div>
     </main>
