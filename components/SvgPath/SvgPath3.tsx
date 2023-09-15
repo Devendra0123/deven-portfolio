@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 
 const SvgPath3 = () => {
   const [showButton, setShowButton] = useState(false);
-const [buttonStyle, setButtonStyle] = useState({
+  const [buttonStyle, setButtonStyle] = useState({
     fill: "#0CC0DF",
     transition: "fill 0.3s ease",
-})
+  });
   useEffect(() => {
     const svgPath: any = document.querySelector(".svg-path path");
     const length = svgPath.getTotalLength();
@@ -20,7 +20,7 @@ const [buttonStyle, setButtonStyle] = useState({
         (document.documentElement.scrollHeight -
           document.documentElement.clientHeight);
 
-      const drawLength = length * scrollPercentage * 1.2;
+      const drawLength = length * scrollPercentage;
 
       svgPath.style.strokeDashoffset = length - drawLength;
 
@@ -42,20 +42,20 @@ const [buttonStyle, setButtonStyle] = useState({
   const buttonHeight = 1.7;
   const buttonText = "Key Highlights";
 
-   // Change button fill color on hover
+  // Change button fill color on hover
   const handleButtonHover = () => {
     setButtonStyle({
-        fill : "#A6A6A6",
-        transition: "fill 0.3s ease",
-    })
+      fill: "#A6A6A6",
+      transition: "fill 0.3s ease",
+    });
   };
 
-   // Restore initial fill color when not hovering
+  // Restore initial fill color when not hovering
   const handleButtonLeave = () => {
     setButtonStyle({
-        fill : "#0CC0DF",
-        transition: "fill 0.3s ease",
-    })
+      fill: "#0CC0DF",
+      transition: "fill 0.3s ease",
+    });
   };
 
   return (
@@ -64,17 +64,17 @@ const [buttonStyle, setButtonStyle] = useState({
       style={{
         width: "100%",
         height: "auto",
-        zIndex: 0
+        zIndex: 0,
       }}
     >
       <svg
         className="svg-path"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="-29.5 -0 40 30"
+        viewBox="-29.5 -0 40 50"
         preserveAspectRatio="xMidYMax meet"
       >
         <path
-          d="M 0 0 C 0 2 -1 2 -3 2 H -21 H -24 V 2 C -26 2 -26 3 -26 4 V 26 V 26"
+          d="M 0 0 C 0 2 -1 2 -3 2 H -21 H -24 V 2 C -26 2 -26 3 -26 4 V 56 V 56"
           stroke="#DD9915"
           strokeWidth="0.05"
           fill="none"
@@ -89,7 +89,7 @@ const [buttonStyle, setButtonStyle] = useState({
               height={buttonHeight}
               fill={buttonStyle.fill} // Use the dynamic fill color
               onMouseEnter={handleButtonHover} // Change fill color on hover
-              onMouseLeave={handleButtonLeave} 
+              onMouseLeave={handleButtonLeave}
               className="cursor-pointer"
             />
             {/* Add text inside the button */}
@@ -98,7 +98,7 @@ const [buttonStyle, setButtonStyle] = useState({
               y={buttonY + buttonHeight / 2}
               textAnchor="middle"
               dominantBaseline="middle"
-              fill="white" 
+              fill="white"
               fontSize="0.5"
               className="cursor-pointer"
               onMouseEnter={handleButtonHover} // Change fill color on hover

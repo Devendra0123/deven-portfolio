@@ -13,7 +13,7 @@ const SeoOptimization = () => {
       if (seoSection) {
         const rect = seoSection.getBoundingClientRect();
         console.log(rect.top);
-        const isVisible = rect.top <= 600 && rect.bottom <= window.innerHeight;
+        const isVisible = rect.top <= 1000 && rect.bottom <= window.innerHeight;
         setVisible(isVisible);
       }
     };
@@ -37,7 +37,7 @@ const SeoOptimization = () => {
       />
 
       <div className="relative ml-[100px] mt-[50px] ">
-        <SeoAnimation />
+        <SeoAnimation visibility={visible} />
       </div>
     </div>
   );

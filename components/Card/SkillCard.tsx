@@ -29,7 +29,7 @@ const SkillCard = ({
           } transition delay-150 duration-300 ease-out z-10 flex items-center justify-center w-[70px] h-[70px] rounded-full bg-light`}
         >
           <div className="w-[70px] h-[70px] rounded-full flex items-center justify-center bg-gray1/25 ">
-            <Image src={icon} alt="" width={60} height={60} />
+            <Image src={icon} alt="" width={40} height={40} className="object-contain" />
           </div>
         </div>
       )}
