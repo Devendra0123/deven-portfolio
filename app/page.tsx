@@ -5,8 +5,24 @@ import SeoOptimization from "@/components/Sections/Skills/SeoOptimization";
 import ProjectsDisplay from "@/components/Sections/projects/ProjectsDisplay";
 import SvgPath from "@/components/SvgPath/SvgPath";
 import SvgPath3 from "@/components/SvgPath/SvgPath3";
+import TripProForm from "@/components/TripPro/TripProForm"
 
-export default function Home() {
+export default async function Home() {
+
+  const data = {
+    DepartureTime: "23/10/2023",
+    DepartureLocationCode: "DEL",
+    ArrivalLocationCode: "LAX",
+  }
+
+  const res = await fetch('http://localhost:3000/api/tripPro',{
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  
   return (
     <main className="mt-[-20px] relative max-w-full overflow-hidden flex flex-col">
       <SvgPath />
@@ -23,6 +39,7 @@ export default function Home() {
           <ProjectsDisplay />
         </div>
       </div>
+      <TripProForm />
     </main>
   );
 }

@@ -17,12 +17,17 @@ const SeoAnimation = ({ visibility }: Props) => {
               visibility
                 ? "opacity-1 transform translate-y-[0px] "
                 : "opacity-0 transform -translate-y-[20px] "
-            } transition delay-150 duration-300 ease-out`}
+            } group transition delay-150 duration-300 ease-out`}
           >
             <div
               className={`w-[50px] h-[50px] ${
                 index % 2 == 0 ? "bg-primaryBlue" : "bg-yellow1"
               } z-[-1] absolute left-[50%] right-[50%] transform -translate-x-[50%] -translate-y-[50%] rounded-full z-[-1]`}
+            />
+             <div
+              className={`w-[50px] h-[50px] ${
+                index % 2 == 0 ? "bg-yellow1" : "bg-primaryBlue"
+              } z-[-2] absolute left-[50%] right-[50%] transform -translate-x-[50%] -translate-y-[50%] group-hover:-skew-x-12 group-hover:-skew-y-12 rounded-full z-[-1] transition duration-300 ease-out`}
             />
             <div
               style={{
