@@ -1,5 +1,7 @@
 "use client";
+import ProjectCard from "@/components/Card/ProjectCard";
 import SkillCard from "@/components/Card/SkillCard";
+import { projectsData } from "@/data/projectsData";
 import React, { useState, useEffect } from "react";
 
 const ProjectsDisplay = () => {
@@ -34,6 +36,14 @@ const ProjectsDisplay = () => {
         visibility={visible}
         description="I have listed few projects completed by me."
       />
+
+      {projectsData?.length > 0 && (
+        <div className="ml-[100px] mt-[50px] flex items-center gap-[50px] justify-start flex-wrap ">
+          {projectsData.map((item, index) => (
+            <ProjectCard key={index} data={item} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
