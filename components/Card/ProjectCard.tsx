@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { Project } from "@/types";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -27,16 +27,23 @@ const ProjectCard = ({ data }: Props) => {
 
   // Define a CSS style object with transitions for background-image and background-position
   const cardStyle = {
-    backgroundImage: `${gradient}, url(${image})`,
-    backgroundRepeat: `no-repeat`,
+    backgroundImage: `${gradient}`,
+    backgroundRepeat: "no-repeat",
     backgroundPosition: `${mousePosition.x * 100}% ${mousePosition.y * 100}%`,
   };
 
   return (
     <div
-      className="relative min-w-[250px] max-w-[250px] h-[300px] p-[20px] bg-white rounded-lg shadow-lg flex flex-col items-center gap-[20px] cursor-pointer"
+      className="relative min-w-[250px] max-w-[250px] h-[300px] p-[20px] flex flex-col items-center gap-[20px] cursor-pointer"
       onMouseMove={handleMouseMove}
-      style={cardStyle}
+      style={{
+        background: "rgba(44, 48, 58, 0.2)",
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+        backdropFilter: "blur(1px)",
+        border: "1px solid rgba(255, 255, 255, 0.7)",
+        borderRadius: "10px",
+        transition: "all 0.3s ease", // Add a transition for flex-direction
+      }}
     >
       <div className="relative min-w-[130px] max-w-[130px] min-h-[130px] max-h-[130px] bg-light rounded-full">
         <Image

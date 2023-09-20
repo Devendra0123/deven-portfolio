@@ -1,6 +1,7 @@
 "use client";
 import ProjectCard from "@/components/Card/ProjectCard";
 import SkillCard from "@/components/Card/SkillCard";
+import SvgPath4 from "@/components/SvgPath/SvgPath4";
 import { projectsData } from "@/data/projectsData";
 import React, { useState, useEffect } from "react";
 
@@ -38,10 +39,12 @@ const ProjectsDisplay = () => {
       />
 
       {projectsData?.length > 0 && (
-        <div className="ml-[100px] mt-[50px] flex items-center gap-[50px] justify-start flex-wrap ">
+        <div className="relative ml-[100px] mt-[50px] flex items-center gap-[50px] justify-start flex-wrap ">
           {projectsData.map((item, index) => (
             <ProjectCard key={index} data={item} />
           ))}
+
+          <SvgPath4 />
         </div>
       )}
     </div>
