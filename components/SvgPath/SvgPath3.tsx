@@ -22,7 +22,7 @@ const SvgPath3 = () => {
 
       const drawLength = length * scrollPercentage;
 
-      svgPath.style.strokeDashoffset = length - drawLength;
+      svgPath.style.strokeDashoffset = length - drawLength * 1.7;
 
       setShowButton(scrollPercentage >= 0.2);
     };
