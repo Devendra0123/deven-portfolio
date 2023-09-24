@@ -5,7 +5,6 @@ import SeoOptimization from "@/components/Sections/Skills/SeoOptimization";
 import ProjectsDisplay from "@/components/Sections/projects/ProjectsDisplay";
 import SvgPath from "@/components/SvgPath/SvgPath";
 import SvgPath3 from "@/components/SvgPath/SvgPath3";
-import TripProForm from "@/components/TripPro/TripProForm"
 
 export default async function Home() {
   
