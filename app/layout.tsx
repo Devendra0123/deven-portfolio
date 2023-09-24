@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-[#F0F7FF] py-[30px] font-poppins'>
+      <body className='w-full overflow-x-hidden bg-[#F0F7FF] py-[30px] font-poppins flex flex-col items-center'>
         <Navbar />
         {children}
       </body>

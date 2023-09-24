@@ -10,7 +10,7 @@ import SvgPath3 from "@/components/SvgPath/SvgPath3";
 export default async function Home() {
   
   return (
-    <main className="mt-[-20px] relative max-w-full overflow-hidden flex flex-col">
+    <main className="mt-[0px] relative w-[90%] overflow-hidden flex flex-col">
       <SvgPath />
       <MainSection />
       <div className="relative w-full">

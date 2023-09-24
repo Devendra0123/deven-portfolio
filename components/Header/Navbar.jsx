@@ -5,7 +5,7 @@ import { navLinks } from "@/data/navlinks";
 const Navbar = () => {
   return (
     <div>
-      <div className="flex items-center justify-between px-[100px]">
+      <div className="w-screen flex items-center justify-between px-[100px]">
         {/*....Logo...*/}
         <div className="">
           <Image src="/logo.png" alt="" width={200} height={70} />

@@ -22,9 +22,9 @@ const SvgPath3 = () => {
 
       const drawLength = length * scrollPercentage;
 
-      svgPath.style.strokeDashoffset = length - drawLength * 1.7;
+      svgPath.style.strokeDashoffset = length - drawLength * 2;
 
-      setShowButton(scrollPercentage >= 0.2);
+      setShowButton(scrollPercentage >= 0.1);
     };
 
     // Add a scroll event listener to track the scroll position
@@ -70,11 +70,11 @@ const SvgPath3 = () => {
       <svg
         className="svg-path"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="-29.5 -0 40 50"
+        viewBox="-29.5 -0 40 55"
         preserveAspectRatio="xMidYMax meet"
       >
         <path
-          d="M 0 0 C 0 2 -1 2 -3 2 H -21 H -24 V 2 C -26 2 -26 3 -26 4 V 56 V 56"
+          d="M 0 0 C 0 2 -1 2 -3 2 H -21 H -24 V 2 C -26 2 -26 3 -26 4 V 76 V 76"
           stroke="#DD9915"
           strokeWidth="0.05"
           fill="none"

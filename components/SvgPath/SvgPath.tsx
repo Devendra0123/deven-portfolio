@@ -77,6 +77,12 @@ const SvgPath = () => {
             r="0.05" // Radius of the circle
             fill="orange" // Circle color
           />
+           <circle
+            cx="12" // Initial position (adjust as needed)
+            cy="7.2" // Initial position (adjust as needed)
+            r="0.3" // Radius of the circle
+            fill="#0CC0DF" // Circle color
+          />
       </svg>
     </div>
   );

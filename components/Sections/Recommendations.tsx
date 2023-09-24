@@ -4,7 +4,7 @@ import RecommendationCard from "../Card/RecommendationCard";
 
 const Recommendations = () => {
   return (
-    <div className="w-full flex flex-col items-center gap-[100px]">
+    <div className="w-full flex flex-col items-center gap-[70px]">
       <h1 className="text-primaryBlue font-bold text-2xl tracking-wider">Recommendations by Others</h1>
       <div className="w-full flex flex-wrap items-center justify-center gap-[70px]">
         {recommendations?.length > 0 &&
