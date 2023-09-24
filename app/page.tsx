@@ -1,4 +1,5 @@
 import MainSection from "@/components/MainSection";
+import Recommendations from "@/components/Sections/Recommendations";
 import CleanCode from "@/components/Sections/Skills/CleanCode";
 import ProjectHighlights from "@/components/Sections/Skills/ProjectHighlights";
 import SeoOptimization from "@/components/Sections/Skills/SeoOptimization";
@@ -22,6 +23,7 @@ export default async function Home() {
           <SeoOptimization />
           <ProjectHighlights />
           <ProjectsDisplay />
+          <Recommendations />
         </div>
       </div>
     </main>

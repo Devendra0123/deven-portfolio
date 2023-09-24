@@ -23,10 +23,10 @@ const Tooltip = ({ text, alignment, style, icon }: Props) => {
             className={`${style} w-max p-[8px] rounded-[5px] absolute ${
               alignment === "top"
                 ? "top-[-40px] left-[50%] transform -translate-x-[50%]"
-                : alignment === "bottom" ? "bottom-[-40px] left-[50%] transform -translate-x-[50%]" : ""
+                : alignment === "bottom" ? "bottom-[-45px] left-[50%] transform -translate-x-[50%]" : ""
             }`}
           >
-            <p>{text}</p>
+            <p className="text-[13px]">{text}</p>
           </div>
         )}
       </div>

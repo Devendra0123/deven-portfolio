@@ -43,16 +43,6 @@ const ProjectsDisplay = () => {
           {projectsData.map((item, index) => (
             <ProjectCard key={index} data={item} />
           ))}
-
-          <div>
-            <Image
-              src="/graphic1.png"
-              alt=""
-              width={400}
-              height={400}
-              className="z-[-1] object-contain absolute top-[-10%] right-[0%] rotate-[20deg] "
-            />
-          </div>
         </div>
       )}
     </div>
