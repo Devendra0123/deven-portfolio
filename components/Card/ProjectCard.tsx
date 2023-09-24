@@ -3,7 +3,9 @@ import { Project } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-
+import { BsLink } from "react-icons/bs";
+import { SiSololearn } from "react-icons/si";
+import Tooltip from "../Tooltip";
 interface Props {
   data: Project;
 }
@@ -11,7 +13,7 @@ interface Props {
 const ProjectCard = ({ data }: Props) => {
   const { name, image, link, slug } = data;
 
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
   // State to track the mouse position
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 });
 
@@ -31,7 +33,7 @@ const ProjectCard = ({ data }: Props) => {
 
   return (
     <div
-      className="group relative bg-[#fff]/50 min-w-[250px] max-w-[250px] h-[360px] p-[20px] rounded-lg shadow-lg flex flex-col items-center gap-[20px] cursor-pointer"
+      className="relative bg-transparent min-w-[250px] max-w-[250px] h-[320px] p-[20px] rounded-lg shadow-lg flex flex-col items-center gap-[20px]"
       onMouseMove={handleMouseMove}
     >
       <div className="relative min-w-[130px] max-w-[130px] min-h-[130px] max-h-[130px] bg-light rounded-full">
@@ -42,12 +44,22 @@ const ProjectCard = ({ data }: Props) => {
           className="object-contain rounded-full"
         />
       </div>
-      <p className="text-slate-700 tracking-wider text-center">{name.slice(0,15) || "..."}</p>
-      <div className={`flex flex-col justify-center items-center gap-[10px]`}>
-        <Link href={link} className="w-full border border-primaryBlue text-primaryBlue px-[20px] py-[13px] rounded-[5px]">
-          Visit Website
-        </Link>
-        <Link href={``} className="w-full bg-primaryBlue px-[20px] py-[13px] rounded-[5px] text-white">Case Study</Link>
+      <p className="w-full text-slate-700 tracking-wider text-center">
+        {name.slice(0, 20) + "..." || "..."}
+      </p>
+      <div className="flex items-center gap-[20px]">
+        <Tooltip
+          alignment="bottom"
+          text="View Details"
+          icon={<SiSololearn className="text-yellow1 text-[18px]" />}
+          style="bg-yellow1"
+        />
+        <Tooltip
+          alignment="top"
+          text="View Details"
+          icon={<BsLink className="text-primaryBlue text-[29px]" />}
+          style="bg-primaryBlue text-white"
+        />
       </div>
     </div>
   );
