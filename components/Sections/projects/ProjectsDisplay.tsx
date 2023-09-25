@@ -3,6 +3,7 @@ import ProjectCard from "@/components/Card/ProjectCard";
 import SkillCard from "@/components/Card/SkillCard";
 import SvgPath4 from "@/components/SvgPath/SvgPath4";
 import { projectsData } from "@/data/projectsData";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const ProjectsDisplay = () => {

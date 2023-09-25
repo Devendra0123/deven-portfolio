@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Header/Navbar";
+import { TbMessage2Share } from "react-icons/tb"
+import Tooltip from "@/components/Tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +19,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-[#F0F7FF] py-[30px] font-poppins'>
+      <body className='relative w-full overflow-x-hidden bg-[#F0F7FF] py-[30px] font-poppins flex flex-col items-center'>
         <Navbar />
         {children}
+        <div className="fixed bottom-[40px] right-[40px] z-10 bg-yellow1 shadow-lg w-[40px] h-[40px] rounded-full flex items-center justify-center">
+          <Tooltip
+            alignment="top"
+            text="Send me message"
+            icon={
+              <TbMessage2Share className={`text-[18px] cursor-pointer hover:scale-110 transition duration-150 ease-in`} />
+            }
+            style="bg-yellow1"
+          />
+        </div>
       </body>
     </html>
   );

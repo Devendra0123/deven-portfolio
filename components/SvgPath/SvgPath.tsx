@@ -25,14 +25,14 @@ const SvgPath = () => {
       circle1.setAttribute("cy", path1.getPointAtLength(currentPosition1).y);
 
 
-       setInterval(() => {
+      setInterval(() => {
         // Move the circles along the paths
         currentPosition1 += 0.1;
         currentPosition2 += 0.12;
 
         if (currentPosition1 >= pathLength1 && currentPosition2 >= pathLength1) {
-             currentPosition1 = 0;
-             currentPosition2 = 0;
+          currentPosition1 = 0;
+          currentPosition2 = 0;
         }
 
         // Update the positions of the circles
@@ -44,7 +44,7 @@ const SvgPath = () => {
       }, 20); // Adjust the interval for slower animation
     }
   }, [])
-  
+
 
   return (
     <div className="absolute top-0 left-0 right-0">
@@ -53,7 +53,11 @@ const SvgPath = () => {
         id="visual"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 -0.3 23 8"
-        style={{ width: "100%", height: "470px" }}
+        style={{
+          width: "100%",
+          height: "470px",
+          zIndex: 1
+        }}
       >
         <path
           ref={pathRef1}
@@ -70,13 +74,19 @@ const SvgPath = () => {
           r="0.05" // Radius of the circle
           fill="#0CC0DF" // Circle color
         />
-         <circle
-            ref={circle2Ref}
-            cx="0" // Initial position (adjust as needed)
-            cy="0" // Initial position (adjust as needed)
-            r="0.05" // Radius of the circle
-            fill="orange" // Circle color
-          />
+        <circle
+          ref={circle2Ref}
+          cx="0" // Initial position (adjust as needed)
+          cy="0" // Initial position (adjust as needed)
+          r="0.05" // Radius of the circle
+          fill="orange" // Circle color
+        />
+        <circle
+          cx="12" // Initial position (adjust as needed)
+          cy="7.2" // Initial position (adjust as needed)
+          r="0.3" // Radius of the circle
+          fill="#0CC0DF" // Circle color
+        />
       </svg>
     </div>
   );

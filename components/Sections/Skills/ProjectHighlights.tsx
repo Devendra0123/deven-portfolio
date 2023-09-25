@@ -74,7 +74,7 @@ const ProjectHighlights = () => {
                 {index + 1}
               </p>
               {icon && icon}
-              <p>{title}</p>
+              <p className="text-white">{title}</p>
             </div>
           ))}
         </div>
