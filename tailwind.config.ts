@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         poppins: "Poppins",
+        merienda: "Merienda",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

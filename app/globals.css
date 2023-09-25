@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Merienda:wght@600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -17,4 +17,19 @@
   100%{
     transform: rotate(180deg);
   }
+}
+
+/* Hide the scrollbar but keep the content scrollable */
+.scroll-container::-webkit-scrollbar {
+  width: 0.5em; /* Adjust the width as needed */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the thumb */
+}
+
+.scroll-container {
+  /* Optional: You can add padding to the container to prevent content from being hidden under the scrollbar area */
+  padding-right: 10px; /* Adjust as needed */
+  overflow-y: scroll; /* Enable vertical scrolling */
 }
