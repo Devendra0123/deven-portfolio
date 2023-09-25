@@ -12,8 +12,8 @@ const Recommendations = () => {
             <RecommendationCard
               key={index}
               data={item}
-              cardStyle={(index === 1) || (index === 2) ? "bg-yellow1 text-white" : "bg-white"}
-              positionStyle={(index === 1) || (index === 2) ? "bg-white text-yellow1" : "bg-yellow1"}
+              cardStyle={(index === 1) || (index === 2) ? "bg-white" : "bg-white"}
+              positionStyle={(index === 1) || (index === 2) ? "bg-white text-yellow1" : "text-yellow1"}
             />
           ))}
       </div>

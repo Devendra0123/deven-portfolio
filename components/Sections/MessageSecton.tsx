@@ -44,7 +44,7 @@ const MessageSection = () => {
               className="w-full p-[8px] outline-none border-none"
             />
             <div className="w-full h-[1px] bg-yellow1 " />
-            <div className="scroll-container w-full h-[350px] bg-slate-200/95 p-[20px] overflow-y-auto text-[14px] flex flex-col items-center justify-center">
+            <div className="w-full h-[350px] bg-slate-200/95 p-[20px] overflow-y-auto text-[14px] flex flex-col items-center justify-center">
               <div className="w-full flex flex-col items-center">
                 <Image src="/logo.png" alt="" width={100} height={40} />
                 <p className="w-full text-center font-bold font-merienda tracking-wider leading-6">
@@ -52,12 +52,13 @@ const MessageSection = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-primaryBlue flex items-center p-[10px]">
+            <div className="bg-primaryBlue flex items-center gap-[20px] p-[10px]">
               <textarea
+                id=""
                 placeholder="Type messsage..."
-                className="grow bg-transparent placeholder:text-white/50 outline-none border-none text-white"
+                className="scroll-container grow bg-transparent placeholder:text-white/50 outline-none border-none text-white text-base resize-none"
               />
-              <div className="bg-white w-[30px] h-[30px] rounded-full flex items-center justify-center ">
+              <div className="cursor-pointer bg-white hover:bg-slate-200 w-[30px] h-[30px] rounded-full flex items-center justify-center ">
                 <VscSend className="text-yellow1 font-bold" />
               </div>
             </div>

@@ -18,7 +18,7 @@ const SvgPath = () => {
 
       // Set initial position of the circles at the start of the paths
       let currentPosition1 = 0;
-      let currentPosition2 = 0;
+      let currentPosition2 = 13;
 
       // Circle 1
       circle1.setAttribute("cx", path1.getPointAtLength(currentPosition1).x);
@@ -47,7 +47,7 @@ const SvgPath = () => {
 
 
   return (
-    <div className="absolute top-0 left-0 right-0">
+    <div className="hidden md:block absolute top-0 left-0 right-0">
       <svg
         className=""
         id="visual"
