@@ -37,10 +37,10 @@ const ProjectCard = ({ data }: Props) => {
       className="relative min-w-[250px] max-w-[250px] h-[300px] p-[20px] flex flex-col items-center gap-[20px] cursor-pointer"
       onMouseMove={handleMouseMove}
       style={{
-        background: "rgba(44, 48, 58, 0.2)",
+        background: "rgba(44, 48, 58, 0.9)",
         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
         backdropFilter: "blur(1px)",
-        border: "1px solid rgba(255, 255, 255, 0.7)",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
         borderRadius: "10px",
         transition: "all 0.3s ease", // Add a transition for flex-direction
       }}
@@ -53,7 +53,7 @@ const ProjectCard = ({ data }: Props) => {
           className="object-contain rounded-full"
         />
       </div>
-      <p className="font-[600] text-slate-700 tracking-wider text-center">
+      <p className=" text-white tracking-wider text-center">
         {name}
       </p>
     </div>

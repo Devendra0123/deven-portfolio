@@ -7,6 +7,10 @@ import React, { useState, useEffect } from "react";
 
 const ProjectsDisplay = () => {
   const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // CSS class for the growing rectangle
+  const rectangleClass = isVisible ? 'rectangle-visible' : 'rectangle-hidden';
 
   useEffect(() => {
     const projectsSection = document.querySelector("#projects");
@@ -17,6 +21,7 @@ const ProjectsDisplay = () => {
         console.log(rect.top);
         const isVisible = rect.top <= 700;
         setVisible(isVisible);
+        setIsVisible(true)
       }
     };
     if (projectsSection) {
@@ -43,10 +48,10 @@ const ProjectsDisplay = () => {
           {projectsData.map((item, index) => (
             <ProjectCard key={index} data={item} />
           ))}
-
-          <SvgPath4 />
         </div>
       )}
+
+    
     </div>
   );
 };
