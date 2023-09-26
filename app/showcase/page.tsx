@@ -1,4 +1,5 @@
 import ShowcaseCard from "@/components/Card/ShowcaseCard";
+import ShowcaseCardsTemplate from "@/components/Layout/ShowcaseCardsTemplate";
 import { showcaseData } from "@/data/showcaseData";
 import React from "react";
 
@@ -17,11 +18,8 @@ const Showcase = () => {
         <p className="text-lg">{`Next.js earns the confidence of web's titans.`}</p>
       </div>
 
-      <div>
-        {showcaseData?.length > 0 &&
-          showcaseData.map((item, index) => (
-            <ShowcaseCard key={index} data={item} cardStyle="w-[350px] h-[300px] "/>
-          ))}
+      <div className="w-full flex justify-center mt-[50px] pb-[50px]">
+        <ShowcaseCardsTemplate data={showcaseData} />
       </div>
     </div>
   );

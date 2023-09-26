@@ -17,7 +17,6 @@ export const showcaseData: ShowcaseCardType[] = [
     projectLogo: "/medisewa-logo.jpg",
     projectTitle: "Medisewa",
   },
-
   {
     image: "/red-reach-himalaya1.png",
     info: "",
@@ -53,7 +52,7 @@ export const showcaseData: ShowcaseCardType[] = [
   },
 
   {
-    image: "",
+    image: "/onviro-tech1.png",
     info: "",
     mainFeature: {
       feature1: {
@@ -65,12 +64,11 @@ export const showcaseData: ShowcaseCardType[] = [
         title: "",
       },
     },
-    projectLogo: "",
-    projectTitle: "",
+    projectLogo: "/onviro-logo.png",
+    projectTitle: "Onviro",
   },
-
   {
-    image: "",
+    image: "/onviro-tech1.png",
     info: "",
     mainFeature: {
       feature1: {
@@ -82,7 +80,7 @@ export const showcaseData: ShowcaseCardType[] = [
         title: "",
       },
     },
-    projectLogo: "",
-    projectTitle: "",
+    projectLogo: "/onviro-logo.png",
+    projectTitle: "Onviro",
   },
 ];
