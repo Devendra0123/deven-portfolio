@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { navLinks } from "@/data/navlinks";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -15,7 +16,7 @@ const Navbar = () => {
           <ul className="flex items-center gap-[30px]">
             {navLinks?.map((item, index) => (
               <li key={index} className="font-bold cursor-pointer">
-                {item.name}
+                <Link href={item.link}>{item.name}</Link>
               </li>
             ))}
           </ul>
