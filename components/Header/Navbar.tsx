@@ -9,7 +9,9 @@ const Navbar = () => {
       <div className="w-screen flex items-center justify-between px-[100px]">
         {/*....Logo...*/}
         <div className="">
-          <Image src="/logo.png" alt="" width={200} height={70} />
+          <Link href="/">
+            <Image src="/logo.png" alt="" width={200} height={70} />
+          </Link>
         </div>
         <div className="flex items-center gap-[30px]">
           {/*....Navlinks...*/}
@@ -21,7 +23,7 @@ const Navbar = () => {
             ))}
           </ul>
           <button className="bg-primaryBlue py-[10px] px-[25px] font-bold text-white">
-            Signup
+            <Link href="/signup">Signup</Link>
           </button>
         </div>
       </div>
