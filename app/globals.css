@@ -19,17 +19,23 @@
   }
 }
 
-/* Hide the scrollbar but keep the content scrollable */
 .scroll-container::-webkit-scrollbar {
-  width: 0.5em; /* Adjust the width as needed */
+  width: 0.5em;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: transparent; /* Hide the thumb */
+  background-color: transparent;
 }
 
 .scroll-container {
-  /* Optional: You can add padding to the container to prevent content from being hidden under the scrollbar area */
-  padding-right: 10px; /* Adjust as needed */
-  overflow-y: scroll; /* Enable vertical scrolling */
+  padding-right: 10px;
+  overflow-y: scroll;
+}
+
+.clip-path-circle{
+  width: 100%;
+  height: 450px;
+  background-color: #DD9915;
+  opacity: 40%;
+  clip-path: circle(400px at 100% 100%);
 }

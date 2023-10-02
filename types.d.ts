@@ -36,3 +36,25 @@ export interface TechnologyProps {
   };
   image: any;
 }
+
+export interface TutorialTopicProps {
+  _id: string;
+  name: string;
+  slug: {
+    current: string;
+  };
+  technology: any;
+}
+
+export interface TutorialPostProps {
+  _id: string;
+  title: string;
+  body: any;
+  technology: any;
+  topic: any;
+  slug: {
+    current: string;
+  };
+  mainImage: any;
+
+}
