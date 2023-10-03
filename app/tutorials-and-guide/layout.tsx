@@ -1,10 +1,9 @@
 import Sidebar from "@/components/TutorialComponents/Sidebar";
 import { TechnologyProps, TutorialTopicProps } from "@/types";
 import { sanityFetch } from "@/utils/sanity/client";
-import { fetchPost } from "../actions";
 
 export default async function TutorialsLayout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {
