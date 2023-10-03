@@ -4,6 +4,7 @@ import { TechnologyProps } from "@/types";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import HandleOutsideClick from "../HandleOutsideClick";
 interface Props {
   data: TechnologyProps[];
 }
@@ -20,23 +21,6 @@ const TechnologyDropdown = ({ data }: Props) => {
       setActiveItem(data[0]);
     }
   }, [data]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
-        setIsDropdownActive(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="w-full">
@@ -83,6 +67,8 @@ const TechnologyDropdown = ({ data }: Props) => {
           </div>
         ) : null}
       </div>
+
+      <HandleOutsideClick containerRef={containerRef} handleFunc={()=> setIsDropdownActive(false)} />
     </div>
   );
 };

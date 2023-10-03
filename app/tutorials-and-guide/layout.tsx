@@ -9,12 +9,12 @@ export default async function TutorialsLayout({
 }) {
   const techdata = await sanityFetch<TechnologyProps[]>({
     query: `*[_type == "technology"]`,
-    tags: [],
+    tags: ['technology'],
   });
 
   const tutorialTopics = await sanityFetch<TutorialTopicProps[]>({
     query: `*[_type == "topic"]`,
-    tags: [],
+    tags: ['topic'],
   });
 
   return (
