@@ -13,7 +13,7 @@ export async function createTopic(formData: FormData) {
 
   if (!name || !tech) return;
 
-  const slug = generateSlug(name).toLowerCase();
+  const slug = generateSlug(name.toString()).toLowerCase();
 
   const doc: any = {
     _type: "topic",
