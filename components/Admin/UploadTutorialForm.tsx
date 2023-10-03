@@ -8,6 +8,7 @@ import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import CreateTopic from "../Popup/CreateTopic";
 import Overlay from "../Overlay";
 import HandleOutsideClick from "../HandleOutsideClick";
+import { createTutorialPost } from "@/app/actions";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -19,10 +20,16 @@ interface Props {
 const UploadTutorialForm = ({ technologies, topics }: Props) => {
   const topicRef: any = useRef(null);
   const createTopicRef: any = useRef(null);
+
   const { pending } = useFormStatus();
 
   const [isTopicFocused, setIsTopicFocused] = useState(false);
   const [isCreateTopicClicked, setIsCreateTopicClicked] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState<TutorialTopicProps>();
+  const [selectedTechId, setSelectedTechId] = useState("");
+  const [title, setTitle] = useState("");
+  const [mainImage, setMainImage] = useState<any>();
+  const [publishedAt, setPublishedAt] = useState<string>();
   const [content, setContent] = useState("");
 
   const quillModules = {
@@ -57,26 +64,48 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
   const handleEditorChange = (newContent: any) => {
     setContent(newContent);
   };
+
+  const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files?.length === 0 || files === null) {
+      return;
+    }
+    setMainImage(files[0]);
+  };
+
+  const formData = {
+    title,
+    selectedTechId,
+    selectedTopicId: selectedTopic?._id,
+    mainImage,
+    content,
+    publishedAt
+  };
+
   return (
     <div>
-      <form className="w-full bg-dark1 p-[30px] rounded-lg text-white flex flex-col gap-[20px]">
+      <form
+        action={() => createTutorialPost(formData)}
+        className="w-full bg-dark1 p-[30px] rounded-lg text-white flex flex-col gap-[20px]"
+      >
         <div className="flex flex-col gap-[8px]">
           <label>Title</label>
           <input
             type="text"
             placeholder="Enter title"
+            onChange={(e) => setTitle(e.target.value)}
             className="p-[8px] rounded-[4px] outline-none bg-slate-300 border border-slate-400 text-black"
           />
         </div>
 
         <div className="relative flex flex-col gap-[8px]">
-          <p>Topic</p>
+          <p>Select Topic</p>
           <button
             type="button"
             onClick={() => setIsTopicFocused((prev) => !prev)}
             className="bg-slate-300 p-[8px] w-max rounded-[4px] text-black"
           >
-            Select topic
+            {selectedTopic ? selectedTopic.name : "Select topic"}
           </button>
           <div
             ref={topicRef}
@@ -86,7 +115,11 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           >
             <Dropdown
               data={topics}
-              dropdowStyle=" p-[10px] rounded-[4px] text-black"
+              dropdowStyle="w-full max-h-[200px] overflow-auto p-[10px] rounded-[4px] text-black"
+              handleDropdownItemClick={(topic: TutorialTopicProps) => {
+                setSelectedTopic(topic);
+                setIsTopicFocused(false);
+              }}
             />
             <div>
               <button
@@ -106,8 +139,13 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
             {technologies?.length > 0 &&
               technologies.map((item, index) => (
                 <div key={index} className="flex items-center gap-[5px]">
-                  <input type="radio" />
-                  <label>{item.name}</label>
+                  <input
+                    type="radio"
+                    id={item._id}
+                    name="tech"
+                    onChange={() => setSelectedTechId(item._id)}
+                  />
+                  <label htmlFor={item._id}>{item.name}</label>
                 </div>
               ))}
           </div>
@@ -117,6 +155,9 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           <p>Select main image</p>
           <input
             type="file"
+            accept="image/*"
+            name="image"
+            onChange={handleImage}
             className="bg-slate-300 p-[8px] rounded-[4px] w-max text-black"
           />
         </div>
@@ -138,6 +179,7 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           <p>Published at</p>
           <input
             type="date"
+            onChange={(e) => setPublishedAt(e.target.value)}
             className="bg-slate-300 p-[8px] rounded-[4px] w-max text-black"
           />
         </div>
@@ -154,7 +196,7 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
       {isCreateTopicClicked && <Overlay />}
       {isCreateTopicClicked && (
         <div ref={createTopicRef}>
-          <CreateTopic technologies={technologies} />
+          <CreateTopic technologies={technologies} handleVisibility={()=> setIsCreateTopicClicked(false)} />
         </div>
       )}
 
