@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        serverActions: true
+        serverActions: true,
+        logging: 'verbose',
       },
       images:{
         domains: ["cdn.sanity.io"]
