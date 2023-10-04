@@ -31,13 +31,16 @@ const TechnologyDropdown = ({ data }: Props) => {
             className="w-full border border-slate-500 rounded-[5px] p-[10px] flex items-center gap-[10px]"
           >
             <div className="w-full flex items-center gap-[10px] font-medium">
-              <Image
-                src={urlForImage(activeItem?.image.asset).url()}
-                alt="icon"
-                width={30}
-                height={30}
-                className="object-cover"
-              />
+              {activeItem?.image && (
+                <Image
+                  src={urlForImage(activeItem?.image.asset).url()}
+                  alt="icon"
+                  width={30}
+                  height={30}
+                  className="object-cover"
+                />
+              )}
+
               <p>{activeItem.name}</p>
             </div>
             <BsChevronDown className="text-xl font-bold" />
@@ -49,16 +52,19 @@ const TechnologyDropdown = ({ data }: Props) => {
             {technologies.map((item, index) => (
               <div
                 key={index}
-                className="w-full flex flex-col gap-[10px] text-white"
+                className="w-full flex flex-col gap-[10px] text-white p-[5px]"
               >
                 <div className="flex items-center justify-center gap-[10px] ">
-                  <Image
-                    src={urlForImage(item?.image.asset).url()}
-                    alt="icon"
-                    width={20}
-                    height={20}
-                    className="object-cover"
-                  />
+                  {item?.image && (
+                    <Image
+                      src={urlForImage(item?.image.asset).url()}
+                      alt="icon"
+                      width={20}
+                      height={20}
+                      className="object-cover"
+                    />
+                  )}
+
                   <p>{item.name}</p>
                 </div>
                 <div className="w-full h-[1px] bg-slate-500 " />
@@ -68,7 +74,10 @@ const TechnologyDropdown = ({ data }: Props) => {
         ) : null}
       </div>
 
-      <HandleOutsideClick containerRef={containerRef} handleFunc={()=> setIsDropdownActive(false)} />
+      <HandleOutsideClick
+        containerRef={containerRef}
+        handleFunc={() => setIsDropdownActive(false)}
+      />
     </div>
   );
 };

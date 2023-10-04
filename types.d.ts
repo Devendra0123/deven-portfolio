@@ -50,11 +50,12 @@ export interface TutorialPostProps {
   _id: string;
   title: string;
   body: any;
+  htmlCode: string;
   technology: any;
   topic: any;
   slug: {
     current: string;
   };
   mainImage: any;
-
+  publishedAt: Date;
 }

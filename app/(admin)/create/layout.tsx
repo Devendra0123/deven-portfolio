@@ -1,21 +1,14 @@
-import Sidebar from "@/components/TutorialComponents/Sidebar";
-import { TechnologyProps, TutorialTopicProps } from "@/types";
-import { sanityFetch } from "@/utils/sanity/client";
+import { getTechData, getTutorialTopics } from "@/app/actions";
+
 
 export default async function CreateLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const techdata = await sanityFetch<TechnologyProps[]>({
-    query: `*[_type == "technology"]`,
-    tags: ['technology'],
-  });
+  const techdata = await getTechData()
 
-  const tutorialTopics = await sanityFetch<TutorialTopicProps[]>({
-    query: `*[_type == "topic"]`,
-    tags: ['topic'],
-  });
+  const tutorialTopics = await getTutorialTopics()
 
   return (
     <section className="">

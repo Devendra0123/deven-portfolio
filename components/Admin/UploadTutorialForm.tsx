@@ -1,15 +1,15 @@
 "use client";
 import { TechnologyProps, TutorialTopicProps } from "@/types";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import CreateTopic from "../Popup/CreateTopic";
 import Overlay from "../Overlay";
 import HandleOutsideClick from "../HandleOutsideClick";
 import { createTutorialPost } from "@/app/actions";
-import { convertHtmlToSanityBlockContent } from "@/lib/convertHtmlToBlockContent";
+import { quillFormats, quillModules } from "@/utils/quillFormat";
+import CreateTech from "../Popup/CreateTech";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -21,46 +21,21 @@ interface Props {
 const UploadTutorialForm = ({ technologies, topics }: Props) => {
   const topicRef: any = useRef(null);
   const createTopicRef: any = useRef(null);
+  const createTechRef: any = useRef(null);
 
-  const { pending } = useFormStatus();
-
+  const [pending, setPending] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isTopicFocused, setIsTopicFocused] = useState(false);
   const [isCreateTopicClicked, setIsCreateTopicClicked] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState<TutorialTopicProps>();
+  const [isTechnologyClicked, setIsTechnologyClicked] = useState(false);
+  const [selectedTopic, setSelectedTopic] =
+    useState<TutorialTopicProps | null>();
   const [selectedTechId, setSelectedTechId] = useState("");
   const [title, setTitle] = useState("");
   const [mainImage, setMainImage] = useState<any>();
   const [publishedAt, setPublishedAt] = useState<string>();
   const [content, setContent] = useState("");
-
-  const quillModules = {
-    toolbar: [
-      [{ header: [1, 2, 3, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
-      [{ align: [] }],
-      [{ color: [] }],
-      ["code-block"],
-      ["clean"],
-    ],
-  };
-
-  const quillFormats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "link",
-    "image",
-    "align",
-    "color",
-    "code-block",
-  ];
 
   const handleEditorChange = (newContent: any) => {
     setContent(newContent);
@@ -68,36 +43,55 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
 
   const handleImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
+
     if (files?.length === 0 || files === null) {
       return;
     }
+
     setMainImage(files[0]);
   };
 
-  const formData = {
-    title,
-    selectedTechId,
-    selectedTopicId: selectedTopic?._id,
-    mainImage,
-    content,
-    publishedAt
+  // Reset form
+  const resetForm = () => {
+    setSelectedTopic(null);
+    setSelectedTechId("");
+    setTitle("");
+    setPublishedAt("");
+    setContent("");
+    setMainImage("");
   };
 
-  useEffect(() => {
-    const block = convertHtmlToSanityBlockContent(`
-  <h1>Hello</h1>
-  <p><strong>This</strong> is <em>nice</em></p>
-  <img src="image-url.jpg" alt="Image Alt Text">
-  <a href="https://example.com">Visit Example</a>
-`);
-    console.log(block)
-  }, [content])
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setIsUploaded(false);
+      setPending(true);
+      const imageId = "";
+      const formData = {
+        title,
+        selectedTechId,
+        selectedTopicId: selectedTopic?._id,
+        imageId: imageId,
+        content: content,
+        publishedAt,
+      };
 
+      await createTutorialPost(formData);
+      setPending(false);
+      setIsUploaded(true);
+      setErrorMessage("");
+      resetForm();
+    } catch (err: any) {
+      setPending(false);
+      setIsUploaded(false);
+      setErrorMessage(err.message);
+    }
+  };
 
   return (
     <div>
       <form
-        action={() => createTutorialPost(formData)}
+        onSubmit={handleSubmit}
         className="w-full bg-dark1 p-[30px] rounded-lg text-white flex flex-col gap-[20px]"
       >
         <div className="flex flex-col gap-[8px]">
@@ -105,6 +99,7 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           <input
             type="text"
             placeholder="Enter title"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="p-[8px] rounded-[4px] outline-none bg-slate-300 border border-slate-400 text-black"
           />
@@ -121,8 +116,9 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           </button>
           <div
             ref={topicRef}
-            className={`${isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
-              } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
+            className={`${
+              isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
+            } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
           >
             <Dropdown
               data={topics}
@@ -144,7 +140,7 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           </div>
         </div>
 
-        <div className="relative flex flex-col gap-[8px]">
+        <div ref={createTechRef} className="relative flex flex-col gap-[8px]">
           <p>Select Technology</p>
           <div className="flex items-center gap-[20px] flex-wrap bg-slate-300 p-[10px] rounded-[4px] text-black">
             {technologies?.length > 0 &&
@@ -159,6 +155,16 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
                   <label htmlFor={item._id}>{item.name}</label>
                 </div>
               ))}
+
+            <div>
+              <button
+                type="button"
+                onClick={() => setIsTechnologyClicked(true)}
+                className="bg-dark1 p-[8px] rounded-[4px] text-white "
+              >
+                Create technology
+              </button>
+            </div>
           </div>
         </div>
 
@@ -195,19 +201,38 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           />
         </div>
 
+        {errorMessage && (
+          <p className="py-[10px] text-red-500">*{errorMessage}</p>
+        )}
+
         <button
           type="submit"
           aria-disabled={pending}
           className="bg-yellow1 p-[8px] rounded-[4px] mt-[20px]"
         >
-          Upload Guide
+          {pending
+            ? "processing"
+            : !pending && isUploaded
+            ? "Uploaded Successfully"
+            : !pending && !isUploaded && errorMessage
+            ? "Try Again"
+            : "Upload Guide"}
         </button>
       </form>
 
-      {isCreateTopicClicked && <Overlay />}
+      {(isCreateTopicClicked || isTechnologyClicked) && <Overlay />}
       {isCreateTopicClicked && (
         <div ref={createTopicRef}>
-          <CreateTopic technologies={technologies} handleVisibility={() => setIsCreateTopicClicked(false)} />
+          <CreateTopic
+            technologies={technologies}
+            handleVisibility={() => setIsCreateTopicClicked(false)}
+          />
+        </div>
+      )}
+
+      {isTechnologyClicked && (
+        <div ref={createTechRef}>
+          <CreateTech handleVisibility={() => setIsTechnologyClicked(false)} />
         </div>
       )}
 
@@ -227,6 +252,17 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
         handleFunc={() => {
           if (isTopicFocused) {
             setIsTopicFocused(false);
+          }
+          return;
+        }}
+      />
+
+      <HandleOutsideClick
+        containerRef={createTechRef}
+        parameter={isTechnologyClicked}
+        handleFunc={() => {
+          if (isTechnologyClicked) {
+            setIsTechnologyClicked(false);
           }
           return;
         }}

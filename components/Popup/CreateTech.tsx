@@ -1,14 +1,13 @@
 "use client";
-import { createTopic } from "@/app/actions";
+import { createTech, createTopic } from "@/app/actions";
 import { TechnologyProps } from "@/types";
 import React, { useState } from "react";
 
 interface Props {
-  technologies: TechnologyProps[];
   handleVisibility: any
 }
 
-const CreateTopic = ({ technologies,handleVisibility }: Props) => {
+const CreateTech = ({ handleVisibility }: Props) => {
   const [pending, setPending] = useState(false);
   const [isCreated, setIsCreated] = useState(false);
   const [name, setName] = useState("");
@@ -17,13 +16,13 @@ const CreateTopic = ({ technologies,handleVisibility }: Props) => {
   return (
     <div className="z-30 fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] bg-white p-[20px] rounded-lg shadow">
       <p className="w-full text-center font-bold underline underline-offset-4 decoration-primaryBlue">
-        Create Topic
+        Create Tech
       </p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
           setIsCreated(false);
-          await createTopic(name, tech);
+          await createTech(name);
           setPending(false);
           setIsCreated(true);
           handleVisibility()
@@ -39,25 +38,6 @@ const CreateTopic = ({ technologies,handleVisibility }: Props) => {
             onChange={(e) => setName(e.target.value)}
             className="bg-slate-300 p-[8px] rounded-[4px]"
           />
-        </div>
-
-        <div className="relative flex flex-col gap-[8px]">
-          <p>Select Technology</p>
-          <div className="flex items-center gap-[20px] flex-wrap bg-slate-300 p-[10px] rounded-[4px] text-black">
-            {technologies?.length > 0 &&
-              technologies.map((item, index) => (
-                <div key={index} className="flex items-center gap-[5px]">
-                  <input
-                    id={item.name}
-                    type="radio"
-                    name="tech"
-                    value={item._id}
-                    onChange={() => setTech(item._id)}
-                  />
-                  <label htmlFor={item.name}>{item.name}</label>
-                </div>
-              ))}
-          </div>
         </div>
 
         <button
@@ -77,4 +57,4 @@ const CreateTopic = ({ technologies,handleVisibility }: Props) => {
   );
 };
 
-export default CreateTopic;
+export default CreateTech;

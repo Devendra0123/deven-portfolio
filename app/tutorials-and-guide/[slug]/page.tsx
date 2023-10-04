@@ -8,18 +8,43 @@ interface Props {
   };
 }
 const IndividualPost = async ({ params: { slug } }: Props) => {
- 
   const res = await sanityFetch<TutorialPostProps>({
-    query: `*[_type == "post" && topic->slug.current == "${slug}"][0]`,
+    query: `*[_type == "tutorialPost" && topic->slug.current == "${slug}"][0]`,
     tags: [],
   });
 
-  const { _id, body, mainImage, technology, title, topic } = res;
+  const {
+    _id,
+    body,
+    htmlCode,
+    mainImage,
+    technology,
+    title,
+    topic,
+    publishedAt,
+  } = res;
 
   return (
-    <div className="grow">
-      <h1>{title}</h1>
-    </div>
+    <article className="grow flex flex-col gap-[30px] p-[20px]">
+      <div>
+        <h1 className="font-bold text-xl">{title}</h1>
+        <p className="text-[14px] text-slate-400 pl-[10px]">{`${publishedAt}`}</p>
+      </div>
+
+      <div>
+        <p className="bg-slate-300 p-[8px] rounded-lg font-medium">
+          {`Don't fotget to press "`}
+          <span className="text-primaryBlue text-xl font-bold">D</span>
+          {`", if you like the post`}
+        </p>
+      </div>
+      <div
+        dangerouslySetInnerHTML={{ __html: htmlCode }}
+        style={{
+          wordSpacing: "5px",
+        }}
+      />
+    </article>
   );
 };
 
