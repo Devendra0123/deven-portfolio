@@ -1,6 +1,6 @@
 "use client";
 import { TechnologyProps, TutorialTopicProps } from "@/types";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
@@ -9,6 +9,7 @@ import CreateTopic from "../Popup/CreateTopic";
 import Overlay from "../Overlay";
 import HandleOutsideClick from "../HandleOutsideClick";
 import { createTutorialPost } from "@/app/actions";
+import { convertHtmlToSanityBlockContent } from "@/lib/convertHtmlToBlockContent";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -82,6 +83,17 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
     publishedAt
   };
 
+  useEffect(() => {
+    const block = convertHtmlToSanityBlockContent(`
+  <h1>Hello</h1>
+  <p><strong>This</strong> is <em>nice</em></p>
+  <img src="image-url.jpg" alt="Image Alt Text">
+  <a href="https://example.com">Visit Example</a>
+`);
+    console.log(block)
+  }, [content])
+
+
   return (
     <div>
       <form
@@ -109,9 +121,8 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           </button>
           <div
             ref={topicRef}
-            className={`${
-              isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
-            } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
+            className={`${isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
+              } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
           >
             <Dropdown
               data={topics}
@@ -196,7 +207,7 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
       {isCreateTopicClicked && <Overlay />}
       {isCreateTopicClicked && (
         <div ref={createTopicRef}>
-          <CreateTopic technologies={technologies} handleVisibility={()=> setIsCreateTopicClicked(false)} />
+          <CreateTopic technologies={technologies} handleVisibility={() => setIsCreateTopicClicked(false)} />
         </div>
       )}
 

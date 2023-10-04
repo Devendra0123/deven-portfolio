@@ -4,11 +4,11 @@ import { TutorialPostProps, TutorialTopicProps } from "@/types";
 import { generateSlug } from "@/utils/generateSlug";
 import { generateUniqueId } from "@/utils/generateUniqueId";
 import { client, sanityFetch } from "@/utils/sanity/client";
-
+import { convertHtmlToSanityBlockContent } from "@/lib/convertHtmlToBlockContent"
 import { revalidateTag } from "next/cache";
 
-export async function createTopic(name: string,tech: string) {
-console.log(name,tech)
+export async function createTopic(name: string, tech: string) {
+  console.log(name, tech)
 
   if (!name || !tech) return;
 
