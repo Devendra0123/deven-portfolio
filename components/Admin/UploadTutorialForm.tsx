@@ -10,6 +10,7 @@ import HandleOutsideClick from "../HandleOutsideClick";
 import { createTutorialPost } from "@/app/actions";
 import { quillFormats, quillModules } from "@/utils/quillFormat";
 import CreateTech from "../Popup/CreateTech";
+import { convertHtmlToSanityBlockContent } from "../../lib/convertHtmlToBlockContent";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -29,12 +30,13 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
   const [isTopicFocused, setIsTopicFocused] = useState(false);
   const [isCreateTopicClicked, setIsCreateTopicClicked] = useState(false);
   const [isTechnologyClicked, setIsTechnologyClicked] = useState(false);
-  const [selectedTopic, setSelectedTopic] =
-    useState<TutorialTopicProps | null>();
+  const [selectedTopic, setSelectedTopic] = useState<
+    TutorialTopicProps | null | any
+  >();
   const [selectedTechId, setSelectedTechId] = useState("");
   const [title, setTitle] = useState("");
   const [mainImage, setMainImage] = useState<any>();
-  const [publishedAt, setPublishedAt] = useState<string>();
+  const [publishedAt, setPublishedAt] = useState<string>("");
   const [content, setContent] = useState("");
 
   const handleEditorChange = (newContent: any) => {
@@ -49,17 +51,6 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
     }
 
     setMainImage(files[0]);
-
-    const data = new FormData()
-    data.set('file', files[0])
-
-    const imageId = await fetch("/api/image-upload", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'multipart/formdata'
-      },
-      body: data,
-    });
   };
 
   // Reset form
@@ -74,20 +65,21 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const sanityBlockContent: any = convertHtmlToSanityBlockContent(content);
     try {
       setIsUploaded(false);
       setPending(true);
-      const imageId = "";
-      const formData = {
-        title,
-        selectedTechId,
-        selectedTopicId: selectedTopic?._id,
-        imageId: imageId,
-        content: content,
-        publishedAt,
-      };
 
-      await createTutorialPost(formData);
+      const formData = new FormData();
+      formData.append("image", mainImage);
+      formData.append("title", title);
+      formData.append("selectedTechId", selectedTechId);
+      formData.append("selectedTopicId", selectedTopic?._id);
+      formData.append("content", sanityBlockContent);
+      formData.append("publishedAt", publishedAt);
+
+      await createTutorialPost(formData,sanityBlockContent);
       setPending(false);
       setIsUploaded(true);
       setErrorMessage("");
@@ -127,8 +119,9 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           </button>
           <div
             ref={topicRef}
-            className={`${isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
-              } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
+            className={`${
+              isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
+            } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
           >
             <Dropdown
               data={topics}
@@ -223,10 +216,10 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           {pending
             ? "processing"
             : !pending && isUploaded
-              ? "Uploaded Successfully"
-              : !pending && !isUploaded && errorMessage
-                ? "Try Again"
-                : "Upload Guide"}
+            ? "Uploaded Successfully"
+            : !pending && !isUploaded && errorMessage
+            ? "Try Again"
+            : "Upload Guide"}
         </button>
       </form>
 

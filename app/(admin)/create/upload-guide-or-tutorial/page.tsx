@@ -5,12 +5,12 @@ import { sanityFetch } from '@/utils/sanity/client';
 const UploadGuideOrTutorial = async() => {
 
     const techdata = await sanityFetch<TechnologyProps[]>({
-      query: `*[_type == "technology"]`,
+      query: `*[_type == "tutorialTechnology"]`,
       tags: [],
     });
 
     const tutorialTopics = await sanityFetch<TutorialTopicProps[]>({
-      query: `*[_type == "topic"]`,
+      query: `*[_type == "tutorialTopic"]`,
       tags: [],
     });
 

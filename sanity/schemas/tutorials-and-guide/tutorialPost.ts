@@ -23,13 +23,13 @@ export default defineType({
       name: "technology",
       title: "Technology",
       type: "reference",
-      to: { type: "technology" },
+      to: { type: "tutorialTechnology" },
     }),
     defineField({
       name: "topic",
       title: "Topic",
       type: "reference",
-      to: { type: "topic" },
+      to: { type: "tutorialTopic" },
     }),
     defineField({
       name: "mainImage",
@@ -59,7 +59,8 @@ export default defineType({
     defineField({
       name: "body",
       title: "Body",
-      type: "blockContent",
+      type: 'array', 
+      of: [{type: 'block'}]
     }),
   ],
 

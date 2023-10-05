@@ -1,6 +1,8 @@
 import { TutorialPostProps } from "@/types";
 import { sanityFetch } from "@/utils/sanity/client";
 import React from "react";
+import { PortableText } from "@portabletext/react";
+import { RichTextCoomponent } from "@/components/RichTextComponent";
 
 interface Props {
   params: {
@@ -38,12 +40,7 @@ const IndividualPost = async ({ params: { slug } }: Props) => {
           {`", if you like the post`}
         </p>
       </div>
-      <div
-        dangerouslySetInnerHTML={{ __html: htmlCode }}
-        style={{
-          wordSpacing: "5px",
-        }}
-      />
+      <PortableText value={body} components={RichTextCoomponent} />
     </article>
   );
 };

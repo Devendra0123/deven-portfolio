@@ -1,16 +1,10 @@
 import { client } from "@/utils/sanity/client"
 import { NextApiRequest, NextApiResponse } from "next";
 
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};
-
 export async function POST(request: Request) {
-    const {file} = await request.json()
-   
-    console.log(file)
+    const {name,image}: any = await request.json()
+//    const image = data.get("image")
+    console.log(image,name)
     //    const res = await client.assets
     //     .upload("image", file, {
     //       contentType: file.type,
