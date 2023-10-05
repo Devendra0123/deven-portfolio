@@ -58,7 +58,6 @@ export async function createTech(name: string) {
 
 //Create guide or tutorial topic
 export async function createTopic(name: string, tech: string) {
-  console.log(name, tech);
 
   if (!name || !tech) return;
 
