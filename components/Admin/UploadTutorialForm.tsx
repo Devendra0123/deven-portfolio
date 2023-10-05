@@ -49,6 +49,17 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
     }
 
     setMainImage(files[0]);
+
+    const data = new FormData()
+    data.set('file', files[0])
+
+    const imageId = await fetch("/api/image-upload", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'multipart/formdata'
+      },
+      body: data,
+    });
   };
 
   // Reset form
@@ -116,9 +127,8 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           </button>
           <div
             ref={topicRef}
-            className={`${
-              isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
-            } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
+            className={`${isTopicFocused ? "min-w-[100px] h-max" : "hidden w-0 h-0"
+              } bg-gray-400 p-[10px] z-10 shadow shadow-yellow1 absolute top-[80px] left-0 transition duration-150 ease-out`}
           >
             <Dropdown
               data={topics}
@@ -213,10 +223,10 @@ const UploadTutorialForm = ({ technologies, topics }: Props) => {
           {pending
             ? "processing"
             : !pending && isUploaded
-            ? "Uploaded Successfully"
-            : !pending && !isUploaded && errorMessage
-            ? "Try Again"
-            : "Upload Guide"}
+              ? "Uploaded Successfully"
+              : !pending && !isUploaded && errorMessage
+                ? "Try Again"
+                : "Upload Guide"}
         </button>
       </form>
 
