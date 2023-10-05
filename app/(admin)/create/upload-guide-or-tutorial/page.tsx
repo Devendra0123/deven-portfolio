@@ -6,12 +6,12 @@ const UploadGuideOrTutorial = async() => {
 
     const techdata = await sanityFetch<TechnologyProps[]>({
       query: `*[_type == "tutorialTechnology"]`,
-      tags: [],
+      tags: ['technology'],
     });
 
     const tutorialTopics = await sanityFetch<TutorialTopicProps[]>({
       query: `*[_type == "tutorialTopic"]`,
-      tags: [],
+      tags: ['topic'],
     });
 
   return (
