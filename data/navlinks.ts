@@ -8,11 +8,11 @@ export const navLinks = [
     link: "/tutorials-and-guide",
   },
   {
-    name: "Hire",
-    link: "/hire",
+    name: "Templates",
+    link: "/templates",
   },
   {
-    name: "For developers",
-    link: "/for-developers",
+    name: "Blogs",
+    link: "/blogs",
   },
 ];

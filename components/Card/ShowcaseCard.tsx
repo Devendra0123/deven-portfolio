@@ -16,8 +16,8 @@ const ShowcaseCard = ({ data, cardStyle }: Props) => {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative flex flex-col items-center ${cardStyle} overflow-hidden rounded-[5px] shadow-lg ${
-        isHovered === false && "border border-1 border-yellow1"
+      className={`relative flex flex-col items-center ${cardStyle} overflow-hidden rounded-[5px] shadow ${
+        isHovered === false && "border border-1 border-slate-300"
       } cursor-pointer`}
     >
       <Image
@@ -55,12 +55,12 @@ const ShowcaseCard = ({ data, cardStyle }: Props) => {
             : "absolute top-0 left-0 right-0 bottom-0 transform translate-y-[100%]"
         } bg-gradient-to-t from-white to-transparent w-full flex items-center justify-center gap-[30px] px-[20px] transition duration-150 linear text-[13px]`}
       >
-        <div className="bg-white flex flex-col p-[20px] border border-1 border-primaryBlue rounded-[4px]">
+        <div className="flex flex-col p-[20px] bg-primaryBlue rounded-[4px]">
           <p className="font-bold">40% less</p>
           <p>lines of code</p>
         </div>
 
-        <div className="bg-white flex flex-col p-[20px] border border-1 border-primaryBlue rounded-[4px]">
+        <div className="flex flex-col p-[20px] bg-primaryBlue rounded-[4px]">
           <p className="font-bold">On-Demand ISR</p>
           <p>for faster propagation</p>
         </div>

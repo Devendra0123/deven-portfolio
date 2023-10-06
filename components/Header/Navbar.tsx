@@ -17,13 +17,13 @@ const Navbar = () => {
           {/*....Navlinks...*/}
           <ul className="flex items-center gap-[30px]">
             {navLinks?.map((item, index) => (
-              <li key={index} className="font-bold cursor-pointer">
+              <li key={index} className="font-bold cursor-pointer tracking-[1.2px]">
                 <Link href={item.link}>{item.name}</Link>
               </li>
             ))}
           </ul>
-          <button className="bg-primaryBlue py-[10px] px-[25px] font-bold text-white">
-            <Link href="/signup">Signup</Link>
+          <button className="bg-primaryBlue py-[10px] px-[25px] font-bold text-white rounded-[4px]">
+            <Link href="/hire">Hire</Link>
           </button>
         </div>
       </div>

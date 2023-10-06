@@ -22,7 +22,6 @@ const Sidebar = ({
         query: `*[_type == "tutorialTopic" && technology->slug.current == "${techSlug}"] | order(_createdAt desc)`,
         tags: ["topic"],
       });
-    console.log(res)
     if(res.length > 0){
       setTopicDisplayData(res)
     }

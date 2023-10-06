@@ -1,6 +1,7 @@
 "use server";
 
 import {
+  BlogPostType,
   TechnologyProps,
   TutorialPostProps,
   TutorialTopicProps,
@@ -59,7 +60,6 @@ export async function createTech(name: string) {
 
 //Create guide or tutorial topic
 export async function createTopic(name: string, tech: string) {
-
   if (!name || !tech) return;
 
   const slug = generateSlug(name).toLowerCase();
@@ -83,7 +83,6 @@ export async function createTopic(name: string, tech: string) {
 
 // Create guide or tutorial post
 export async function createTutorialPost(formData: any, blockContent: any) {
-
   const title = formData.get("title");
   const selectedTechId = formData.get("selectedTechId");
   const selectedTopicId = formData.get("selectedTopicId");
@@ -129,3 +128,24 @@ export async function createTutorialPost(formData: any, blockContent: any) {
 
   return res;
 }
+
+// Fetch Blog
+export const fetchBlog = async () => {
+  const res = await sanityFetch<BlogPostType[]>({
+    query: `*[_type == "blogPost"]{
+      title,
+      slug,
+      mainImage,
+      publishedAt,
+      body,
+      author->{
+        name,
+        image,
+        slug,
+        bio
+      }
+    }`,
+    tags: ["blogs"],
+  });
+  return res;
+};

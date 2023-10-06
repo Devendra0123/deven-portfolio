@@ -59,3 +59,29 @@ export interface TutorialPostProps {
   mainImage: any;
   publishedAt: Date;
 }
+
+export interface BlogPostAuthorType {
+  name: string;
+  slug:{
+    current: string
+  };
+  image: any;
+  bio: any
+}
+
+export interface BlogPostCategoryType {
+  title: string;
+  description: text
+}
+
+export interface BlogPostType {
+  title: string;
+  slug:{
+    current: string
+  };
+  author: BlogPostAuthorType;
+  mainImage: any;
+  categories: BlogPostCategoryType;
+  publishedAt: Date;
+  body: any;
+}

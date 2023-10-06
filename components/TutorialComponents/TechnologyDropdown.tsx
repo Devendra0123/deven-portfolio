@@ -29,7 +29,7 @@ const TechnologyDropdown = ({ data, handleTechClick }: Props) => {
         {technologies?.length > 0 && activeItem ? (
           <div
             onClick={() => setIsDropdownActive(!isDropdownActive)}
-            className="w-full border border-slate-500 rounded-[5px] p-[10px] flex items-center gap-[10px]"
+            className="w-full cursor-pointer hover:bg-primaryBlue border border-slate-500 rounded-[5px] p-[10px] flex items-center gap-[10px]"
           >
             <div className="w-full flex items-center gap-[10px] font-medium">
               {activeItem?.image && (
@@ -53,8 +53,12 @@ const TechnologyDropdown = ({ data, handleTechClick }: Props) => {
             {technologies.map((item, index) => (
               <div
                 key={index}
-                className="w-full flex flex-col gap-[10px] text-white p-[5px]"
-                onClick={()=> handleTechClick(item?.slug?.current)}
+                className="cursor-pointer w-full flex flex-col gap-[10px] text-white p-[5px]"
+                onClick={()=> {
+                  handleTechClick(item?.slug?.current)
+                  setActiveItem(item)
+                  setIsDropdownActive(false)
+                }}
               >
                 <div className="flex items-center justify-center gap-[10px] ">
                   {item?.image && (
