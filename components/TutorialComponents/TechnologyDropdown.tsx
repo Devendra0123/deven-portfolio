@@ -7,8 +7,9 @@ import { BsChevronDown } from "react-icons/bs";
 import HandleOutsideClick from "../HandleOutsideClick";
 interface Props {
   data: TechnologyProps[];
+  handleTechClick: any
 }
-const TechnologyDropdown = ({ data }: Props) => {
+const TechnologyDropdown = ({ data, handleTechClick }: Props) => {
   const containerRef: any = useRef(null);
 
   const [technologies, setTechnologies] = useState<TechnologyProps[]>([]);
@@ -53,6 +54,7 @@ const TechnologyDropdown = ({ data }: Props) => {
               <div
                 key={index}
                 className="w-full flex flex-col gap-[10px] text-white p-[5px]"
+                onClick={()=> handleTechClick(item?.slug?.current)}
               >
                 <div className="flex items-center justify-center gap-[10px] ">
                   {item?.image && (

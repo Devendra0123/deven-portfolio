@@ -1,6 +1,9 @@
-import Link from "next/link";
+"use client"
 import TechnologyDropdown from "./TechnologyDropdown";
 import { TechnologyProps, TutorialTopicProps } from "@/types";
+import TutoralTopics from "./TutoralTopics";
+import { sanityFetch } from "@/utils/sanity/client";
+import { useEffect, useState } from "react";
 
 interface Props {
   technologydata: TechnologyProps[];
@@ -11,24 +14,28 @@ const Sidebar = ({
   technologydata,
   tutorialTopic,
 }: Props) => {
+
+  const [topicDisplayData, setTopicDisplayData] = useState<TutorialTopicProps[]>(tutorialTopic);
+  
+  const handleTechClick = async(techSlug: string)=>{
+      const res = await sanityFetch<TutorialTopicProps[]>({
+        query: `*[_type == "tutorialTopic" && technology->slug.current == "${techSlug}"] | order(_createdAt desc)`,
+        tags: ["topic"],
+      });
+    console.log(res)
+    if(res.length > 0){
+      setTopicDisplayData(res)
+    }
+  }
+
   return (
     <div className="w-full min-h-[100vh] max-h-[100vh] overflow-y-auto bg-gray-300 flex flex-col p-[20px]">
       <div className="max-w-[100px]">
-        <TechnologyDropdown data={technologydata} />
+        <TechnologyDropdown data={technologydata} handleTechClick={(slug: string)=> handleTechClick(slug)} />
       </div>
 
       <div className="mt-[50px]">
-        {tutorialTopic?.length > 0 && (
-          <ul className="flex flex-col gap-[10px]">
-            {tutorialTopic.map((topic, index) => (
-              <li key={index} className={` text-[16px] ${index % 2 === 0 ? "bg-slate-300" : "bg-white"} p-[10px] shadow rounded-[4px]`}>
-                <Link href={`/tutorials-and-guide/${topic.slug.current}`}>
-                  {topic.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+        <TutoralTopics tutorialTopic={topicDisplayData} />
       </div>
     </div>
   );

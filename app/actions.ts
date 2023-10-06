@@ -47,6 +47,7 @@ export async function createTech(name: string) {
 
   const doc: any = {
     _type: "tutorialTechnology",
+    slug: { _type: "slug", current: slug },
     name,
   };
   const res = await client.create(doc);
