@@ -15,13 +15,13 @@ const Sidebar = ({
   tutorialTopic,
 }: Props) => {
 
-  const [topicDisplayData, setTopicDisplayData] = useState<TutorialTopicProps[]>(tutorialTopic);
+  let intialTopicDisplayCategorySlug = "abc";
+
+  const initialTopicData = tutorialTopic.filter(item => item.technology.slug.current === intialTopicDisplayCategorySlug)
+  const [topicDisplayData, setTopicDisplayData] = useState<TutorialTopicProps[]>(initialTopicData);
   
   const handleTechClick = async(techSlug: string)=>{
-      const res = await sanityFetch<TutorialTopicProps[]>({
-        query: `*[_type == "tutorialTopic" && technology->slug.current == "${techSlug}"] | order(_createdAt desc)`,
-        tags: ["topic"],
-      });
+      const res = tutorialTopic.filter(item => item.technology.slug.current === techSlug)
     if(res.length > 0){
       setTopicDisplayData(res)
     }

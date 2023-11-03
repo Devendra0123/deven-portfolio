@@ -12,7 +12,7 @@ interface Props {
 const TechnologyDropdown = ({ data, handleTechClick }: Props) => {
   const containerRef: any = useRef(null);
 
-  const [technologies, setTechnologies] = useState<TechnologyProps[]>([]);
+  const [technologies, setTechnologies] = useState<TechnologyProps[]>(data);
   const [activeItem, setActiveItem] = useState<TechnologyProps>();
   const [isDropdownActive, setIsDropdownActive] = useState<boolean>(false);
 

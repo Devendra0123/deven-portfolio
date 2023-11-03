@@ -43,7 +43,11 @@ export interface TutorialTopicProps {
   slug: {
     current: string;
   };
-  technology: any;
+  technology: {
+    slug:{
+      current: string
+    }
+  };
 }
 
 export interface TutorialPostProps {

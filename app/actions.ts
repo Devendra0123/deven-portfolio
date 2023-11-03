@@ -33,7 +33,16 @@ export const getTechData = async () => {
 // get tutorial topics
 export const getTutorialTopics = async () => {
   const res = await sanityFetch<TutorialTopicProps[]>({
-    query: `*[_type == "tutorialTopic"] | order(_createdAt desc)`,
+    query: `*[_type == "tutorialTopic"]{
+      _id,
+      technology->{
+        slug{
+          current
+        }
+      },
+      slug,
+      name
+    } | order(_createdAt desc)`,
     tags: ["topic"],
   });
 
