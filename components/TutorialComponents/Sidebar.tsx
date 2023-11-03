@@ -28,7 +28,7 @@ const Sidebar = ({
   }
 
   return (
-    <div className="w-full min-h-[100vh] max-h-[100vh] overflow-y-auto bg-gray-300 flex flex-col p-[20px]">
+    <div className="w-full min-h-[100vh] max-h-[100vh] overflow-y-auto bg-slate-300 flex flex-col p-[20px]">
       <div className="max-w-[100px]">
         <TechnologyDropdown data={technologydata} handleTechClick={(slug: string)=> handleTechClick(slug)} />
       </div>

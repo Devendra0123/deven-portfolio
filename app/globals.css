@@ -39,3 +39,18 @@
   opacity: 40%;
   clip-path: circle(400px at 100% 100%);
 }
+
+.track {
+  will-change: transform;
+  animation: marquee 5s linear infinite;  
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-30%); }
+}
+
