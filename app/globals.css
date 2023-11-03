@@ -40,12 +40,20 @@
   clip-path: circle(400px at 100% 100%);
 }
 
+/* Showcase Slider animation */
 .track {
   will-change: transform;
   animation: marquee 5s linear infinite;  
 }
+.opposite-track{
+  will-change: transform;
+  animation: opposite-marquee 5s linear infinite; 
+}
 
 .track:hover {
+  animation-play-state: paused;
+}
+.opposite-track:hover {
   animation-play-state: paused;
 }
 
@@ -53,34 +61,36 @@
   from { transform: translateX(0); }
   to { transform: translateX(-30%); }
 }
+@keyframes opposite-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(30%); }
+}
 
 /* laptop css */
 
 .laptop {
   position: relative;
   margin: auto;
-  max-width: 80rem;
+  width: 80vw;
 }
 
 .laptop__screen {
   position: relative;
+  width: 100%;
+  height: 70vh;
   z-index: 1;
   padding: 3%;
   border-radius: 2rem;
   background: #ecf1f7;
   background-image: linear-gradient(to bottom, #333, #111);
-  box-shadow: 0 .1rem 0 #cfcfcf;
-  border: 2px solid #ccc;
+  box-shadow: 0 .1rem 0 #e0a939;
+  border: 2px solid #DD9915;
 }
-
-.laptop__screen img {
-  display: block;
-  max-width: 100%;
-  height: 400px;
-  background: #000;
-  aspect-ratio: attr(width) / attr(height);
+.laptop__screen .showcase__container {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #969292, #ebe1e1);
 }
-
 .laptop__bottom {
   position: relative;
   z-index: 1;
@@ -110,7 +120,7 @@
   width: 50%;
   height: 1.5rem;
   background: #e2e8f0;
-  background-image: linear-gradient(to bottom, #e2e8f0, #bec7d1);
+  background-image: linear-gradient(to bottom, #DD9915, #f3b22f);
 }
 
 .laptop__under::after,
@@ -143,5 +153,3 @@
   background: radial-gradient(ellipse closest-side, #000, transparent);
   opacity: 0.5;
 }
-
-

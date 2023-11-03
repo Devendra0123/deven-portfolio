@@ -1,6 +1,7 @@
 import TextAnimation from "@/components/Animations/TextAnimation";
 import SliderCard from "@/components/Card/SliderCard";
 import Laptop from "@/components/Elements/Laptop";
+import SkillsAndExpertise from "@/components/Sections/SkillsAndExpertise";
 import ShowcaseSlider from "@/components/Slider/ShowcaseSlider";
 
 const Hire = () => {
@@ -24,8 +25,9 @@ const Hire = () => {
       {/* <div className="w-[90%] overflow-hidden mt-[50px] bg-slate-300 shadow-lg shadow-yellow1/75 p-[20px] flex justify-center">
         <ShowcaseSlider />
       </div> */}
-      <div className="mt-[50px]">
-      <Laptop />
+      <div className="w-[80%] flex flex-col gap-[100px] mt-[50px]">
+        <Laptop />
+        <SkillsAndExpertise />
       </div>
 
     </div>
