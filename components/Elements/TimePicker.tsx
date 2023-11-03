@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { FaGlobeAmericas } from "react-icons/fa";
 
-const TimePicker = () => {
+const TimePicker = ({handleTimeClick}: any) => {
 
     const [isTimeZoneBtnClicked, setIsTimeZoneBtnClicked] = useState(false)
     const [selectedTimezone, setSelectedTimezone] = useState('Nepal'); // Default timezone
@@ -70,7 +70,7 @@ const TimePicker = () => {
                         const convertedAMPM = getAMPM(convertedHours);
 
                         return (
-                            <li key={index} className='cursor-pointer bg-teal-400/75 hover:bg-teal-600 text-center font-bold rounded-[25px] w-full p-[10px] '>
+                            <li key={index} onClick={()=> handleTimeClick(`${convertedHours}:${convertedMinutes} ${convertedAMPM}`,selectedTimezone)} className='cursor-pointer bg-teal-400/75 hover:bg-teal-600 text-center font-bold rounded-[25px] w-full p-[10px] '>
                                 {String(convertedHours).padStart(2, '0')} : {String(convertedMinutes).padStart(2, '0')} {convertedAMPM}
                             </li>
                         );

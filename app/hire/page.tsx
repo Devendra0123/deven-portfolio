@@ -5,6 +5,7 @@ import WhatToExpect from "@/components/Sections/WhatToExpect";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { IoCallOutline } from "react-icons/io5";
 import Link from "next/link";
+import CTA1 from "@/components/Sections/CTA/CTA1";
 
 const Hire = () => {
   return (
@@ -20,8 +21,11 @@ const Hire = () => {
           <TextAnimation text="Devendra Chaudhary." />
         </span>
         I am a professional web developer with good proficiency in
-        <span className="pl-[5px] underline underline-offset-8 decoration-primaryBlue font-bold tracking-wider"> React & Next.js.</span> I have been in web development journey
-        for more than 2 years.
+        <span className="pl-[5px] underline underline-offset-8 decoration-primaryBlue font-bold tracking-wider">
+          {" "}
+          React & Next.js.
+        </span>{" "}
+        I have been in web development journey for more than 2 years.
       </div>
 
       {/* <div className="w-[90%] overflow-hidden mt-[50px] bg-slate-300 shadow-lg shadow-yellow1/75 p-[20px] flex justify-center">
@@ -39,21 +43,8 @@ const Hire = () => {
         <p className="w-[50%] mt-[-20px] text-center text-slate-300 text-xl font-medium">
           Do you want to discuss about the web development project?
         </p>
-        <div className="w-full flex items-center justify-center gap-[50px]">
-          <Link href="/schedule-meeting">
-            <button className="flex items-center gap-[12px] px-[30px] py-[8px] rounded-[25px] text-2xl font-bold bg-yellow1 hover:opacity-[85%]">
-              <AiOutlineSchedule /> Schedule a Meeting
-            </button>
-          </Link>
-
-          <Link href="">
-            <button className="flex items-center gap-[12px] px-[30px] py-[8px] rounded-[25px] text-2xl font-bold border border-primaryBlue text-primaryBlue">
-              <IoCallOutline /> Contact me
-            </button>
-          </Link>
-
-        </div>
-
+        {/* CTA SECTION */}
+        <CTA1 />
       </div>
     </div>
   );

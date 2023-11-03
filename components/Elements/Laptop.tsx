@@ -11,7 +11,7 @@ function Laptop() {
 
     const handleScroll = () => {
       const scrollPercentage =
-        (document.documentElement.scrollTop + document.body.scrollTop) * 4 /
+        (document.documentElement.scrollTop + document.body.scrollTop) * 6 /
         (document.documentElement.scrollHeight -
           document.documentElement.clientHeight);
 
