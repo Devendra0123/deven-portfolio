@@ -2,6 +2,9 @@ import TextAnimation from "@/components/Animations/TextAnimation";
 import Laptop from "@/components/Elements/Laptop";
 import SkillsAndExpertise from "@/components/Sections/SkillsAndExpertise";
 import WhatToExpect from "@/components/Sections/WhatToExpect";
+import { AiOutlineSchedule } from "react-icons/ai";
+import { IoCallOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const Hire = () => {
   return (
@@ -28,15 +31,30 @@ const Hire = () => {
         <Laptop />
         <SkillsAndExpertise />
         <WhatToExpect />
-
-        <div className="flex items-center gap-[30px] mt-[-30px]">
-          <button className="px-[30px] py-[8px] rounded-[25px] text-xl font-bold bg-yellow1">Schedule a Meeting</button>
-          <button className="px-[30px] py-[8px] rounded-[25px] text-xl font-bold border border-primaryBlue text-primaryBlue">
-            Contact me
-          </button>
-        </div>
       </div>
+      <div className="w-full bg-dark1 flex flex-col items-center gap-[40px] p-[30px] mt-[30px]">
+        <h1 className="text-slate-300 text-3xl font-bold text-center">
+          Get In Touch
+        </h1>
+        <p className="w-[50%] mt-[-20px] text-center text-slate-300 text-xl font-medium">
+          Do you want to discuss about the web development project?
+        </p>
+        <div className="w-full flex items-center justify-center gap-[50px]">
+          <Link href="/schedule-meeting">
+            <button className="flex items-center gap-[12px] px-[30px] py-[8px] rounded-[25px] text-2xl font-bold bg-yellow1 hover:opacity-[85%]">
+              <AiOutlineSchedule /> Schedule a Meeting
+            </button>
+          </Link>
 
+          <Link href="">
+            <button className="flex items-center gap-[12px] px-[30px] py-[8px] rounded-[25px] text-2xl font-bold border border-primaryBlue text-primaryBlue">
+              <IoCallOutline /> Contact me
+            </button>
+          </Link>
+
+        </div>
+
+      </div>
     </div>
   );
 };

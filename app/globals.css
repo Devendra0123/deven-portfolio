@@ -153,3 +153,32 @@
   background: radial-gradient(ellipse closest-side, #000, transparent);
   opacity: 0.5;
 }
+
+/* Date Picker */
+.calendar-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.date-by-month{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+.date-table{
+  width: max-content;
+  padding: 12px;
+  border-radius: 6px;
+}
+.table-head{
+  padding: 10px;
+}
+.selected {
+  background-color: orange;
+  border-radius: 5px;
+}
