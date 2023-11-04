@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 const TextAnimation = ({ text }: { text: string }) => {
-  const colors = ["red", "blue", "green", "orange", "purple", "teal", "pink"];
-  const fontSizes = ["20px", "24px", "24px", "24px", "24px", "40px", "44px","44px"];
+  const colors = ["orange", "black", "teal", "black", "black", "teal", "black","orange"];
+  const fontSizes = ["24px", "24px", "24px", "24px", "24px", "40px", "44px","44px"];
 
   const [animatedText, setAnimatedText] = useState(
     text

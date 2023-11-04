@@ -1,8 +1,7 @@
 import TextAnimation from "@/components/Animations/TextAnimation";
-import SliderCard from "@/components/Card/SliderCard";
 import Laptop from "@/components/Elements/Laptop";
 import SkillsAndExpertise from "@/components/Sections/SkillsAndExpertise";
-import ShowcaseSlider from "@/components/Slider/ShowcaseSlider";
+import WhatToExpect from "@/components/Sections/WhatToExpect";
 
 const Hire = () => {
   return (
@@ -28,6 +27,14 @@ const Hire = () => {
       <div className="w-[80%] flex flex-col gap-[100px] mt-[50px]">
         <Laptop />
         <SkillsAndExpertise />
+        <WhatToExpect />
+
+        <div className="flex items-center gap-[30px] mt-[-30px]">
+          <button className="px-[30px] py-[8px] rounded-[25px] text-xl font-bold bg-yellow1">Schedule a Meeting</button>
+          <button className="px-[30px] py-[8px] rounded-[25px] text-xl font-bold border border-primaryBlue text-primaryBlue">
+            Contact me
+          </button>
+        </div>
       </div>
 
     </div>
