@@ -158,3 +158,18 @@ export const fetchBlog = async () => {
   });
   return res;
 };
+
+// Patch tutorial likes
+export const patchTutorailLike = async(tutorialId: string,currentLikes: number)=>{
+  console.log(currentLikes)
+  try {
+    const res = await client
+      .patch(tutorialId)
+      .set({ likes: (currentLikes === null || currentLikes === undefined || !currentLikes) ? 1 : currentLikes + 1
+      })
+      .commit();
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}

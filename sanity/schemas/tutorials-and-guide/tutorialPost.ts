@@ -52,15 +52,52 @@ export default defineType({
       type: "datetime",
     }),
     defineField({
-        name: "htmlCode",
-        title: "htmlCode",
-        type: "string",
-      }),
+      name: "htmlCode",
+      title: "htmlCode",
+      type: "string",
+    }),
     defineField({
       name: "body",
       title: "Body",
-      type: 'array', 
-      of: [{type: 'block'}]
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "likes",
+      title: "Likes",
+      type: "number",
+    }),
+    defineField({
+      name: "feedback",
+      title: "Feedback",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "userFeedback",
+          fields: [
+            { type: "string", name: "email" },
+            { type: "string", name: "comment" },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      title: "Post Details",
+      name: "postDetails",
+      type: "object",
+      fields: [
+        { name: "contributor", type: "array", title: "Contributors",  of: [
+          {
+            type: "object",
+            name: "contributor",
+            fields: [
+              { type: "string", name: "name" },
+              { type: "image", name: "image" },
+            ],
+          },
+        ], },
+      ],
     }),
   ],
 

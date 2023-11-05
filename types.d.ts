@@ -44,9 +44,9 @@ export interface TutorialTopicProps {
     current: string;
   };
   technology: {
-    slug:{
-      current: string
-    }
+    slug: {
+      current: string;
+    };
   };
 }
 
@@ -61,27 +61,38 @@ export interface TutorialPostProps {
     current: string;
   };
   mainImage: any;
+  likes: number;
+  feedback: {
+    email: string;
+    comment: string;
+  }[];
+  postDetails: {
+    contributor: {
+      name: string;
+      image: string;
+    }[];
+  };
   publishedAt: Date;
 }
 
 export interface BlogPostAuthorType {
   name: string;
-  slug:{
-    current: string
+  slug: {
+    current: string;
   };
   image: any;
-  bio: any
+  bio: any;
 }
 
 export interface BlogPostCategoryType {
   title: string;
-  description: text
+  description: text;
 }
 
 export interface BlogPostType {
   title: string;
-  slug:{
-    current: string
+  slug: {
+    current: string;
   };
   author: BlogPostAuthorType;
   mainImage: any;
