@@ -161,7 +161,6 @@ export const fetchBlog = async () => {
 
 // Patch tutorial likes
 export const patchTutorailLike = async(tutorialId: string,currentLikes: number)=>{
-  console.log(currentLikes)
   try {
     const res = await client
       .patch(tutorialId)
