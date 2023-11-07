@@ -50,7 +50,7 @@ const IndividualPost = async ({ params: { slug } }: Props) => {
       </div>
 
       <div className="sticky top-[40px] min-w-[10%] max-w-[10%] ">
-        <InteractiveBar tutorialId={_id} currentLikes={likes} />
+        <InteractiveBar tutorialId={_id} currentLikes={likes} postDetails={postDetails} />
       </div>
     </article>
   );

@@ -5,32 +5,41 @@ import { BiComment, BiSolidComment } from "react-icons/bi";
 import { VscLiveShare } from "react-icons/vsc";
 import { PiInfo } from "react-icons/pi";
 import Tooltip from "../Tooltip";
-import { client } from "@/utils/sanity/client";
 import { patchTutorailLike } from "@/app/actions";
+import ShareTutorial from "../Popup/ShareTutorial";
+import Overlay from "../Overlay";
+import PostDetails from "../Popup/PostDetails";
 
 const InteractiveBar = ({
   tutorialId,
   currentLikes,
+  postDetails,
 }: {
   tutorialId: string;
   currentLikes: number;
+  postDetails: any;
 }) => {
   const [isLikeHovered, setIsLikeHovered] = useState(false);
   const [isCommentHovered, setIsCommentHovered] = useState(false);
   const [isShareHovered, setIsShareHovered] = useState(false);
   const [isInfoHovered, setIsInfoHovered] = useState(false);
+  const [isShareIconClicked, setIsShareIconClicked] = useState(false);
+  const [isInfoIconClicked, setIsInfoIconClicked] = useState(false);
 
   // Handle Like Click
   const handleLike = async () => {
     console.log(currentLikes);
-    const likesCount = (currentLikes === null || currentLikes === undefined) ? 1 : currentLikes + 1;
+    const likesCount =
+      currentLikes === null || currentLikes === undefined
+        ? 1
+        : currentLikes + 1;
 
     const updatedLikes = {
-      likes: likesCount
-    }
+      likes: likesCount,
+    };
 
     await patchTutorailLike(tutorialId, updatedLikes).then((res) => {
-      console.log(res)
+      console.log(res);
       setIsLikeHovered(true);
     });
   };
@@ -84,6 +93,7 @@ const InteractiveBar = ({
         <div
           onMouseEnter={() => setIsShareHovered(true)}
           onMouseLeave={() => setIsShareHovered(false)}
+          onClick={() => setIsShareIconClicked(true)}
           className="w-max"
         >
           <Tooltip
@@ -104,6 +114,7 @@ const InteractiveBar = ({
         <div
           onMouseEnter={() => setIsInfoHovered(true)}
           onMouseLeave={() => setIsInfoHovered(false)}
+          onClick={() => setIsInfoIconClicked(true)}
           className="w-max"
         >
           <Tooltip
@@ -119,6 +130,18 @@ const InteractiveBar = ({
           />
         </div>
       </div>
+
+      {isShareIconClicked && (
+        <ShareTutorial handleCross={() => setIsShareIconClicked(false)} />
+      )}
+      {isInfoIconClicked && (
+        <PostDetails
+          handleCross={() => setIsInfoIconClicked(false)}
+          currentLikes={currentLikes}
+          postDetails={postDetails}
+        />
+      )}
+      {(isShareIconClicked || isInfoIconClicked) && <Overlay />}
     </div>
   );
 };
