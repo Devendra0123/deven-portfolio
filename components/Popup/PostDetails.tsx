@@ -29,7 +29,7 @@ const PostDetails = ({
       <div className="flex flex-col gap-[12px]">
         <div className="flex items-center gap-[10px] px-[20px] py-[8px] rounded-[25px] border border-slate-400 shadow shadow-red-600/75 ">
           <AiFillHeart className="text-red-600" />
-          <p>{currentLikes}</p>
+          <p>{currentLikes || 0}</p>
         </div>
 
         <div className="flex items-center gap-[10px] px-[20px] py-[8px] rounded-[25px] border border-slate-400 shadow shadow-teal-500/75 ">
