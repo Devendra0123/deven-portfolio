@@ -160,13 +160,14 @@ export const fetchBlog = async () => {
 };
 
 // Patch tutorial likes
-export const patchTutorailLike = async(tutorialId: string,currentLikes: number)=>{
+export const patchTutorailLike = async (tutorialId: string, doc: any) => {
+ 
   try {
     const res = await client
       .patch(tutorialId)
-      .set({ likes: (currentLikes === null || currentLikes === undefined || !currentLikes) ? 1 : currentLikes + 1
-      })
+      .set(doc)
       .commit();
+      revalidateTag("tutorialPost");
     return res;
   } catch (err) {
     console.log(err);

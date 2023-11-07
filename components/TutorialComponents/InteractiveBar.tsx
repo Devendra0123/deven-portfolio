@@ -23,7 +23,14 @@ const InteractiveBar = ({
   // Handle Like Click
   const handleLike = async () => {
     console.log(currentLikes);
-    await patchTutorailLike(tutorialId, currentLikes).then((res) => {
+    const likesCount = (currentLikes === null || currentLikes === undefined) ? 1 : currentLikes + 1;
+
+    const updatedLikes = {
+      likes: likesCount
+    }
+
+    await patchTutorailLike(tutorialId, updatedLikes).then((res) => {
+      console.log(res)
       setIsLikeHovered(true);
     });
   };
