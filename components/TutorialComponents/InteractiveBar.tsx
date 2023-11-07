@@ -1,23 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BiComment, BiSolidComment } from "react-icons/bi";
 import { VscLiveShare } from "react-icons/vsc";
 import { PiInfo } from "react-icons/pi";
 import Tooltip from "../Tooltip";
-import { patchTutorailLike } from "@/app/actions";
+import { patchComment, patchTutorailLike } from "@/app/actions";
 import ShareTutorial from "../Popup/ShareTutorial";
 import Overlay from "../Overlay";
 import PostDetails from "../Popup/PostDetails";
+import FeedbackForm from "../Popup/FeedbackForm";
+import withFormHandling from "@/lib/FormHandler";
+import { RxCross2 } from "react-icons/rx";
+import { handleKeyPress } from "@/lib/keyPressHandler";
 
 const InteractiveBar = ({
   tutorialId,
   currentLikes,
   postDetails,
+  feedback,
+  postSlug,
 }: {
   tutorialId: string;
   currentLikes: number;
   postDetails: any;
+  feedback: any;
+  postSlug: string;
 }) => {
   const [isLikeHovered, setIsLikeHovered] = useState(false);
   const [isCommentHovered, setIsCommentHovered] = useState(false);
@@ -25,10 +33,10 @@ const InteractiveBar = ({
   const [isInfoHovered, setIsInfoHovered] = useState(false);
   const [isShareIconClicked, setIsShareIconClicked] = useState(false);
   const [isInfoIconClicked, setIsInfoIconClicked] = useState(false);
+  const [isFeedbackIconClicked, setIsFeedbackIconClicked] = useState(false);
 
   // Handle Like Click
   const handleLike = async () => {
-    console.log(currentLikes);
     const likesCount =
       currentLikes === null || currentLikes === undefined
         ? 1
@@ -39,13 +47,38 @@ const InteractiveBar = ({
     };
 
     await patchTutorailLike(tutorialId, updatedLikes).then((res) => {
-      console.log(res);
       setIsLikeHovered(true);
     });
   };
 
-  // Handle Feedback
-  const handleFeedback = async () => {};
+  // Wrapping feedback form with form Handler
+  const FormWithHandling = withFormHandling(FeedbackForm);
+
+  // Submit feedback form
+  const submitFormLogic = async (formData: any) => {
+    await patchComment(tutorialId, formData).then((res) => {
+      setIsFeedbackIconClicked(false);
+    });
+  };
+
+  // Handle Key Press
+  const handleKeyPress = (event: any) => {
+    if (
+      (event.key === "d" || event.key === "D") &&
+      !event.target.matches("input, textarea")
+    ) {
+      handleLike();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
   return (
     <div className="w-full flex justify-center sticky top-[40px]">
       <div className="flex flex-col items-center gap-[20px] mt-[30px]">
@@ -73,6 +106,7 @@ const InteractiveBar = ({
         <div
           onMouseEnter={() => setIsCommentHovered(true)}
           onMouseLeave={() => setIsCommentHovered(false)}
+          onClick={() => setIsFeedbackIconClicked(true)}
           className="w-max"
         >
           <Tooltip
@@ -132,16 +166,37 @@ const InteractiveBar = ({
       </div>
 
       {isShareIconClicked && (
-        <ShareTutorial handleCross={() => setIsShareIconClicked(false)} />
+        <ShareTutorial
+          handleCross={() => setIsShareIconClicked(false)}
+          postSlug={postSlug}
+        />
+      )}
+      {isFeedbackIconClicked && (
+        <div className="z-30 w-full md:w-[450px] fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] flex flex-col gap-[20px] bg-white p-[20px] pb-[40px] rounded-lg shadow">
+          <div className="w-full">
+            <div
+              onClick={() => setIsFeedbackIconClicked(false)}
+              className="cursor-pointer float-right w-[35px] h-[35px] rounded-full border border-slate-800 flex items-center justify-center "
+            >
+              <RxCross2 className="text-[17px] font-bold" />
+            </div>
+          </div>
+          <FormWithHandling
+            onSubmit={(formData: any) => submitFormLogic(formData)}
+          />
+        </div>
       )}
       {isInfoIconClicked && (
         <PostDetails
           handleCross={() => setIsInfoIconClicked(false)}
           currentLikes={currentLikes}
           postDetails={postDetails}
+          feedback={feedback}
         />
       )}
-      {(isShareIconClicked || isInfoIconClicked) && <Overlay />}
+      {(isShareIconClicked || isInfoIconClicked || isFeedbackIconClicked) && (
+        <Overlay />
+      )}
     </div>
   );
 };

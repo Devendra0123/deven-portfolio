@@ -12,7 +12,6 @@ const SeoOptimization = () => {
     const handleElementOnScroll = () => {
       if (seoSection) {
         const rect = seoSection.getBoundingClientRect();
-        console.log(rect.top);
         const isVisible = rect.top <= 1000 && rect.bottom <= window.innerHeight;
         setVisible(isVisible);
       }

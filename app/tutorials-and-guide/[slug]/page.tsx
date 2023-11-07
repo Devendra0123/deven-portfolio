@@ -13,7 +13,7 @@ interface Props {
 const IndividualPost = async ({ params: { slug } }: Props) => {
   const res = await sanityFetch<TutorialPostProps>({
     query: `*[_type == "tutorialPost" && topic->slug.current == "${slug}"][0]`,
-    tags: ['tutorialPost'],
+    tags: ["tutorialPost"],
   });
 
   const {
@@ -30,7 +30,6 @@ const IndividualPost = async ({ params: { slug } }: Props) => {
     publishedAt,
   } = res;
 
-  console.log(likes)
   return (
     <article className="w-full flex items-start">
       <div className="grow flex flex-col gap-[30px] p-[20px]">
@@ -50,7 +49,13 @@ const IndividualPost = async ({ params: { slug } }: Props) => {
       </div>
 
       <div className="sticky top-[40px] min-w-[10%] max-w-[10%] ">
-        <InteractiveBar tutorialId={_id} currentLikes={likes} postDetails={postDetails} />
+        <InteractiveBar
+          tutorialId={_id}
+          currentLikes={likes}
+          postDetails={postDetails}
+          feedback={feedback}
+          postSlug={slug}
+        />
       </div>
     </article>
   );

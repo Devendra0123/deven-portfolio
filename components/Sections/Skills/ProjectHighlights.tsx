@@ -14,7 +14,6 @@ const ProjectHighlights = () => {
     const handleElementOnScroll = () => {
       if (highlightsSection) {
         const rect = highlightsSection.getBoundingClientRect();
-        console.log(rect.top);
         const isVisible = rect.top <= 450;
         setVisible(isVisible);
       }

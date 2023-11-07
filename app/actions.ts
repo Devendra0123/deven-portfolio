@@ -173,3 +173,27 @@ export const patchTutorailLike = async (tutorialId: string, doc: any) => {
     console.log(err);
   }
 }
+
+// Patch Comment
+export const patchComment = async(tutorialId: string, doc: any)=>{
+   const {email,comment} = doc;
+
+   const id = generateUniqueId();
+  try {
+    const res = await client
+      .patch(tutorialId)
+      .setIfMissing({ feedback: [] })
+        .insert('before', 'feedback[0]', [
+          {
+            _key: id,
+            email: email,
+            comment: comment,
+          }
+        ])
+        .commit()
+      revalidateTag("tutorialPost");
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+}

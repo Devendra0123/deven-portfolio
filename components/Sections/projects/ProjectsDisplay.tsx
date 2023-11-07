@@ -19,7 +19,6 @@ const ProjectsDisplay = () => {
     const handleElementOnScroll = () => {
       if (projectsSection) {
         const rect = projectsSection.getBoundingClientRect();
-        console.log(rect.top);
         const isVisible = rect.top <= 700;
         setVisible(isVisible);
         setIsVisible(true)

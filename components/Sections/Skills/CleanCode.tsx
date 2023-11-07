@@ -12,7 +12,6 @@ const CleanCode = () => {
     const handleElementOnScroll = () => {
       if (cleanCodeSection) {
         const rect = cleanCodeSection.getBoundingClientRect();
-        console.log(rect.top);
         const isVisible = rect.top <= 400 && rect.bottom <= window.innerHeight;
         setVisible(isVisible);
 
