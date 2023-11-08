@@ -1,6 +1,5 @@
-"use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 const FeedbackForm = (props: any) => {
   const { formData, loading, success, error, onFormSubmit, onFormChange } =

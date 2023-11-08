@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { SiGooglemeet } from "react-icons/si";
@@ -8,8 +8,12 @@ import TimePicker from "@/components/Elements/TimePicker";
 import { FaCircleInfo } from "react-icons/fa6";
 import ScheduleMeetingForm from "@/components/Popup/ScheduleMeetingForm";
 import Overlay from "@/components/Overlay";
+import withFormHandling from "@/lib/FormHandler";
+import { handleMail } from "@/lib/handleMail";
 
 const ScheduleMeeting = () => {
+  const form: any = useRef();
+
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState<number>(
     new Date().getDate()
@@ -17,6 +21,9 @@ const ScheduleMeeting = () => {
   const [activeMonth, setactiveMonth] = useState(new Date().getMonth());
   const [selectedTime, setSelectedTime] = useState("");
   const [isTimeClicked, setIsTimeClicked] = useState(false);
+
+  const [userMail, setUserMail] = useState("");
+  const [userMessage, setUserMessage] = useState("");
 
   // Handle Date Click
   const handleDateClick = (day: number) => {
@@ -42,6 +49,25 @@ const ScheduleMeeting = () => {
       setCurrentYear((prevYear) => prevYear + 1);
     }
   };
+
+  // Submit form
+  const submitFormLogic = async (formData: any) => {
+    const { email, message } = formData;
+
+    form.current.message.value = `<p>Meeting Schedule:</p>
+    <p>User EmailId : <span>${email}</span></p>
+    <p>date-<span>${currentYear}/${activeMonth}/${selectedDate}</span></p>
+     <p>time-<span>${selectedTime}</span></p>
+     <p>message-<span>${message}</span></p>`;
+
+    await handleMail(form.current).then((res) => {
+      console.log(res);
+    });
+  };
+
+  // Wrapping feedback form with form Handler
+  const FormWithHandling = withFormHandling(ScheduleMeetingForm);
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-[85%] flex items-start justify-evenly gap-[30px] mt-[40px] ">
@@ -126,7 +152,8 @@ const ScheduleMeeting = () => {
       </div>
 
       {isTimeClicked && (
-        <ScheduleMeetingForm
+        <FormWithHandling
+          onSubmit={(formData: any) => submitFormLogic(formData)}
           date={`${currentYear}/${activeMonth}/${selectedDate}`}
           time={selectedTime}
           handleCross={() => setIsTimeClicked(false)}
@@ -134,6 +161,29 @@ const ScheduleMeeting = () => {
       )}
 
       {isTimeClicked && <Overlay />}
+      {/* SMTP form */}
+      <form ref={form} onSubmit={handleMail} className="hidden">
+        <input
+          type="text"
+          name="user_name"
+          readOnly
+          value={process.env.NEXT_PUBLIC_PERSONAL_MAIL}
+        />
+
+        <input
+          type="email"
+          name="user_email"
+          readOnly
+          value={process.env.NEXT_PUBLIC_PERSONAL_MAIL}
+        />
+
+        <textarea
+          name="message"
+          readOnly
+          value={userMessage}
+          className="hidden"
+        />
+      </form>
     </div>
   );
 };

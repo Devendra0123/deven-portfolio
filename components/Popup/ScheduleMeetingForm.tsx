@@ -2,29 +2,22 @@
 import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-interface Props {
-  date: string;
-  time: string;
-  handleCross: any;
-}
-
-const ScheduleMeetingForm = ({ date, time, handleCross }: Props) => {
-  const [email, setEmail] = useState("");
-const [errorMessage, setErrorMessage] = useState("");
-
-  const handleFormSubmit = async (e: any) => {
-    e.preventDefault();
-    if (!email){
-        setErrorMessage("Enter your email id");
-        return;
-    };
-
-    // form Post Query
-  };
+const ScheduleMeetingForm = (props: any) => {
+  const {
+    date,
+    time,
+    handleCross,
+    formData,
+    loading,
+    success,
+    error,
+    onFormSubmit,
+    onFormChange,
+  } = props;
 
   return (
     <form
-      onSubmit={handleFormSubmit}
+      onSubmit={onFormSubmit}
       className="z-30 fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] flex flex-col gap-[20px] bg-white p-[20px] rounded-lg shadow"
     >
       <div className="w-full">
@@ -55,23 +48,36 @@ const [errorMessage, setErrorMessage] = useState("");
         <label className="font-bold">Enter your Email Id</label>
         <input
           placeholder="e.g. abc@gmail.com"
-          onChange={(e)=>{
-            setErrorMessage("")
-            setEmail(e.target.value)
-          }}
+          name="email"
+          required
+          value={formData.email || ""}
+          onChange={onFormChange}
           className="p-[7px] rounded-[4px] bg-slate-300 border border-slate-300 outline-none w-[85%] "
         />
       </div>
-{
-    errorMessage && (
+
+      <div className=" flex flex-col gap-[7px]">
+        <label className="font-bold">{`Type message (Optional)`}</label>
+        <textarea
+          placeholder="Message..."
+          name="message"
+          value={formData.message || ""}
+          onChange={onFormChange}
+          className="p-[7px] rounded-[4px] bg-slate-300 border border-slate-300 outline-none w-[85%] "
+        />
+      </div>
+      {error && (
         <p className="text-[14px] text-red-500">
-            <span className="">*</span> {errorMessage}
+          <span className="">*</span> {error}
         </p>
-    )
-}
+      )}
       <button className="w-full bg-primaryBlue p-[8px] rounded-[5px] text-white">
         Submit
       </button>
+
+      {loading && <p>Wait...</p>}
+      {success && <p>Form submitted successfully!</p>}
+      {error && <p>Error: {error}</p>}
     </form>
   );
 };

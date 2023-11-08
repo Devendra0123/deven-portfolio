@@ -12,7 +12,6 @@ import PostDetails from "../Popup/PostDetails";
 import FeedbackForm from "../Popup/FeedbackForm";
 import withFormHandling from "@/lib/FormHandler";
 import { RxCross2 } from "react-icons/rx";
-import { handleKeyPress } from "@/lib/keyPressHandler";
 
 const InteractiveBar = ({
   tutorialId,
