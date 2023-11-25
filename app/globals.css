@@ -4,17 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
 
 @keyframes textAnimation {
-  0%{
+  0% {
     transform: rotate(0deg);
   }
-  100%{
+
+  100% {
     transform: rotate(180deg);
   }
 }
@@ -32,7 +33,7 @@
   overflow-y: scroll;
 }
 
-.clip-path-circle{
+.clip-path-circle {
   width: 100%;
   height: 450px;
   background-color: #DD9915;
@@ -43,27 +44,40 @@
 /* Showcase Slider animation */
 .track {
   will-change: transform;
-  animation: marquee 5s linear infinite;  
+  animation: marquee 5s linear infinite;
 }
-.opposite-track{
+
+.opposite-track {
   will-change: transform;
-  animation: opposite-marquee 5s linear infinite; 
+  animation: opposite-marquee 5s linear infinite;
 }
 
 .track:hover {
   animation-play-state: paused;
 }
+
 .opposite-track:hover {
   animation-play-state: paused;
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-30%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-30%);
+  }
 }
+
 @keyframes opposite-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(30%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(30%);
+  }
 }
 
 /* laptop css */
@@ -86,11 +100,13 @@
   box-shadow: 0 .1rem 0 #e0a939;
   border: 2px solid #DD9915;
 }
+
 .laptop__screen .showcase__container {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to bottom, #ffffff, #ffffff);
 }
+
 .laptop__bottom {
   position: relative;
   z-index: 1;
@@ -155,14 +171,15 @@
 }
 
 /* Date Picker */
-.calendar-div{
+.calendar-div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
 }
-.date-by-month{
+
+.date-by-month {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,14 +187,17 @@
   padding: 20px;
   border-radius: 5px;
 }
-.date-table{
+
+.date-table {
   width: max-content;
   padding: 12px;
   border-radius: 6px;
 }
-.table-head{
+
+.table-head {
   padding: 10px;
 }
+
 .selected {
   background-color: orange;
   border-radius: 5px;
@@ -185,5 +205,10 @@
 
 /* Shadow neon */
 .shadow-neon:hover {
-  box-shadow: 0 0 10px 4px rgba(29, 78, 216, 0.5); /* Adjust the shadow color and size as needed */
+  box-shadow: 0 0 10px 4px rgba(29, 78, 216, 0.5);
+  /* Adjust the shadow color and size as needed */
+}
+
+.gradient-circle {
+  background: radial-gradient(circle at 50% 50%, rgba(83, 197, 203, 0.4) 1%, rgba(240, 247, 255, 1) 55%, rgba(240, 247, 255, 1) 100%);
 }

@@ -20,12 +20,18 @@ const SvgPath5 = () => {
             >
                 <path
                     ref={pathRef1}
-                    className="opacity-[25%]"
+                    className="opacity-[50%]"
                     d="M 0 0 C 2 2 2 3 3 3 C 4 3 4 2 5 2 C 6 2 7 4 9 6 M 9 6"
                     stroke="#000"
                     strokeWidth="0.01"
                     fill="none"
                 />
+
+                <polygon
+                    x={2}
+                    y={2}
+                    points="0,0 0.2,0.2 0.4,0"
+                    fill="#0CC0DF" />
             </svg>
         </div>
     );
