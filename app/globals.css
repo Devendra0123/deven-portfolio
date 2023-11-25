@@ -170,6 +170,12 @@
   opacity: 0.5;
 }
 
+.recommendation-Card {
+  clip-path: polygon(28% 0, 100% 1%, 100% 81%, 0% 100%);
+  border: 2px solid #000;
+  border-radius: 15px;
+}
+
 /* Date Picker */
 .calendar-div {
   display: flex;
