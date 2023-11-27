@@ -25,9 +25,9 @@ const MessageSection = () => {
           }}
         />
       </div>
-      {isIconClicked && (
+
         <div
-          className={`fixed bottom-[95px] right-[45px] z-10 transition duration-150 ease-in`}
+          className={`${isIconClicked ? "opacity-[100%] translate-x-[0%]" : "opacity-[0%] hidden transform translate-x-[20%] translate-y-[5%]"} z-10 fixed bottom-[95px] right-[45px] transition duration-150 ease-in`}
         >
           <div
             onClick={() => setIsIconClicked(false)}
@@ -37,7 +37,7 @@ const MessageSection = () => {
           </div>
           <SendMessageForm />
         </div>
-      )}
+
     </div>
   );
 };

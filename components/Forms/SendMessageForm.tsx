@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { VscSend } from "react-icons/vsc";
+import { CiUser } from "react-icons/ci";
 
 const SendMessageForm = () => {
 
@@ -17,7 +18,9 @@ const SendMessageForm = () => {
         adminMessage: ""
       }]
       return updatedMessageBox;
-    })
+    });
+
+    setMessage("")
   }
 
   console.log(boxData)
@@ -37,11 +40,14 @@ const SendMessageForm = () => {
       <div className="w-full h-[300px] bg-slate-200/95 p-[20px] overflow-y-auto text-[14px] flex flex-col items-center justify-center">
         {
           boxData.length > 0 && boxData[0]?.userMessage ? (
-            <div>
+            <div className="w-full h-full overflow-auto flex flex-col items-start">
               {
                 boxData.map((item: any, index: number) => (
-                  <div key={index}>
-                    <p>
+                  <div key={index} className="w-full flex items-start gap-[5px]">
+                    <div className="min-w-[32px] min-h-[32px] max-w-[32px] max-h-[32px] flex items-center justify-center border border-slate-500 rounded-full text-[19px] ">
+                      <CiUser />
+                    </div>
+                    <p className="bg-yellow1 p-[5px] rounded-[4px]">
                       {item.userMessage}
                     </p>
                   </div>
@@ -52,7 +58,7 @@ const SendMessageForm = () => {
             <div className="w-full flex flex-col items-center">
               <Image src="/logo.png" alt="" width={100} height={40} />
               <p className="w-full text-center font-bold font-merienda tracking-wider leading-6">
-                Make sure to provide your informations.
+                Make sure to provide your email ID above and necessary informations in message.
               </p>
             </div>
           )
