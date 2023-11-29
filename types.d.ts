@@ -90,6 +90,7 @@ export interface BlogPostCategoryType {
 }
 
 export interface BlogPostType {
+  _id: string;
   title: string;
   slug: {
     current: string;

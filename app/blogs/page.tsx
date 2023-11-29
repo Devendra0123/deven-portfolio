@@ -7,9 +7,9 @@ const Blogs = async () => {
   const data = await fetchBlog();
   return (
     <div className="w-full flex flex-col items-center font-poppins">
-      <div className="w-full flex justify-center bg-yellow1">
+      <div className="w-[80%] flex justify-center bg-yellow1 mt-[30px] rounded-[10px] ">
         <div className="max-w-[50%] flex flex-col items-center gap-[20px] text-center my-[30px]">
-          <h1 className="text-2xl font-bold tracking-[1.3px] font-lato">
+          <h1 className="text-4xl font-bold tracking-[1.3px] font-lato">
             Beyond the Screen: The World <br /> of Programming
           </h1>
           <p>

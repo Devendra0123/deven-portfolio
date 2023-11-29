@@ -270,5 +270,50 @@
 }
 
 .radial-gradient1{
-  background: radial-gradient(circle, rgba(228,240,240,0.8) 50%, rgba(246,213,142,0.1) 100%);
+  background: radial-gradient(circle, rgba(252, 253, 253, 0.8) 20%, rgba(246,213,142,0.1) 100%);
 }
+
+  .blogCard::before{
+    box-sizing: border-box;
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    bottom: 20px;
+    right: 10px;
+    display: block;
+    width: 270px;
+    height: 380px;
+    border-top: 2px solid #00917c;
+     border-bottom: 2px solid #00917c;
+    transform: scale(0, 1);
+    transition: transform 0.4s ease-out;
+    opacity: 0;
+  }
+  .blogCard::after{
+    box-sizing: border-box;
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    bottom: 20px;
+    right: 10px;
+    display: block;
+    width: 270px;
+    height: 380px;
+    border-left: 2px solid #00917c;
+    border-right: 2px solid #00917c;
+    transform: scale(1, 0);
+    transition: transform 0.4s ease-out;
+    opacity: 0;
+  }
+  .blogCard:hover::before{
+    opacity: 1;
+    transform: scale(1.05, 1);
+  }
+  .blogCard:hover::after{
+    opacity: 1;
+    transform: scale(1, 1.05);
+  }
