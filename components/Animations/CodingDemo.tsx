@@ -126,7 +126,7 @@ const CodingDemo = ({ visibility }: Props) => {
           visibility
             ? "opacity-1 transform translate-y-[0px] translate-x-[0px] "
             : "opacity-0 transform -translate-y-[20px] -translate-x-[20px] "
-        } transition delay-150 duration-300 ease-out relative w-max h-max mt-[-105px]`}
+        } transition delay-150 duration-300 ease-out relative w-max h-max mt-[0px] lg:mt-[-105px]`}
       >
         <div
           style={{

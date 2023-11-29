@@ -46,11 +46,13 @@ const DatePicker = ({
   };
 
   const CalendarCell = ({ day, isCurrentDate, isDisabled }) => {
-    const cellClass = isCurrentDate ? "selected" : "hover:bg-yellow-500 rounded-[5px]";
+    const cellClass = isCurrentDate
+      ? "selected"
+      : "hover:bg-yellow-500 rounded-[5px]";
     return (
       <td
         style={{
-            textAlign: "center",
+          textAlign: "center",
           padding: "5px",
           opacity: isDisabled ? "0.5" : "1",
         }}
@@ -152,7 +154,9 @@ const DatePicker = ({
   };
 
   return (
-    <div className="calendar-div">{generateCalendar(year, activeMonth)}</div>
+    <div className="calendar-div w-[90%] md:w-max ">
+      {generateCalendar(year, activeMonth)}
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ import ButtonWithIconAndText from "../ButtonWithIconAndText";
 
 const LeftSection = () => {
   return (
-    <div className="relative pl-[150px]">
+    <div className="relative pl-[100px] lg:pl-[150px]">
       <div>
         <div>
           <p className="font-bold text-[19px]">Devendra Chaudhary</p>

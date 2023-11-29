@@ -70,8 +70,8 @@ const ScheduleMeeting = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-[85%] flex items-start justify-evenly gap-[30px] mt-[40px] ">
-        <div className="w-[25%] flex flex-col gap-[20px]">
+      <div className="w-[85%] flex items-start justify-evenly flex-wrap gap-[30px] mt-[40px] ">
+        <div className="w-[80%] lg:w-[25%] flex flex-col gap-[20px]">
           <div>
             <div className="relative w-[100px] h-[100px] rounded-full bg-yellow1 overflow-hidden ">
               <Image
@@ -112,7 +112,7 @@ const ScheduleMeeting = () => {
 
         <div className="grow">
           <h1 className="text-xl font-bold uppercase">Select Date and Time</h1>
-          <div className="mt-[20px] flex items-start justify-evenly gap-[30px]">
+          <div className="mt-[20px] flex items-start justify-evenly flex-wrap gap-[30px]">
             <div className="w-max p-[10px] border border-slate-300 rounded-[10px] shadow-lg">
               <DatePicker
                 currentYear={currentYear}

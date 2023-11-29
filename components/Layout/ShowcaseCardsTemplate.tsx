@@ -7,9 +7,9 @@ interface Props {
 }
 const ShowcaseCardsTemplate = ({ data }: Props) => {
   return (
-    <div>
+    <div className="w-full flex flex-col items-center">
       {data?.length > 0 && (
-        <div>
+        <div className="w-full flex flex-col items-center">
           {data.length < 5 ? (
             <div>
               {data.map((item, index) => (
@@ -21,7 +21,7 @@ const ShowcaseCardsTemplate = ({ data }: Props) => {
               ))}
             </div>
           ) : data?.length === 5 ? (
-            <div className="flex items-start gap-[50px]">
+            <div className="w-full flex justify-center items-start flex-wrap lg:no-wrap gap-[50px]">
               <div className="flex flex-col items-center gap-[30px]">
                 <ShowcaseCard data={data[0]} cardStyle="w-[400px] h-[250px] " />
                 <ShowcaseCard data={data[1]} cardStyle="w-[400px] h-[250px] " />

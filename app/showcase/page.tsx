@@ -11,7 +11,7 @@ const Showcase = () => {
           style={{
             wordSpacing: "10px",
           }}
-          className="w-[70%] text-6xl text-slate-700 font-bold text-center mt-[50px] leading-[1.2] font-lato"
+          className="w-[90%] lg:w-[70%] text-6xl text-slate-700 font-bold text-center mt-[50px] leading-[1.2] font-lato"
         >
           Unrivaled Prowess, Effectiveness, and Developer Satisfaction.
         </h1>

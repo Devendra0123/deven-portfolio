@@ -6,19 +6,30 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <div>
-      <div className="w-screen flex items-center justify-between px-[100px]">
+      <div className="w-screen flex items-center justify-between px-[20px] md:px-[50px] lg:px-[100px]">
         {/*....Logo...*/}
         <div className="">
           <Link href="/">
             <Image src="/logo.png" alt="" width={200} height={70} />
           </Link>
         </div>
-        <div className="flex items-center gap-[30px]">
-          {/*....Navlinks...*/}
-          <ul className="flex items-center gap-[30px]">
+        <div className="grow lg:w-max flex items-center gap-[30px]">
+          {/*....Nav links...*/}
+          <ul className="grow flex items-center justify-evenly lg:justify-end gap-[30px]">
             {navLinks?.map((item, index) => (
-              <li key={index} className="font-bold cursor-pointer tracking-[1.2px]">
-                <Link href={item.link}>{item.name}</Link>
+              <li
+                key={index}
+                className="hover:opacity-[70%] hover:scale-95 font-bold cursor-pointer tracking-[1.2px] transition duration-150 ease-out"
+              >
+                <Link
+                  href={item.link}
+                  className="lg:hidden w-[35px] h-[35px] flex items-center justify-center bg-slate-300 rounded-full "
+                >
+                  <item.icon className="" />
+                </Link>
+                <Link href={item.link} className="hidden lg:block">
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>

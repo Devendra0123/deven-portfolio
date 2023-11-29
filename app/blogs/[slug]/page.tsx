@@ -37,13 +37,13 @@ const IndividualBlog = async ({ params: { slug } }: Props) => {
       </div>
       <h1 className="text-4xl font-bold">{title}</h1>
 
-      <div className="w-full flex justify-start">
-        <div className="w-[20%] bg-yellow1 p-[10px] rounded-[25px] ">
+      <div className="w-full flex justify-start px-[20px]">
+        <div className="w-[50%] lg:w-[20%] bg-yellow1 p-[10px] rounded-[25px] ">
           <AuthorCard data={author} />
         </div>
       </div>
 
-      <div className="w-full flex justify-start">
+      <div className="w-full flex justify-start px-[20px]">
         <PortableText value={body} components={RichTextCoomponent} />
       </div>
     </div>

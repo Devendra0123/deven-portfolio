@@ -10,15 +10,16 @@ import SvgPath3 from "@/components/SvgPath/SvgPath3";
 export default async function Home() {
   
   return (
-    <main className="mt-[0px] relative w-[90%] overflow-hidden flex flex-col">
+    <main className="z-[-10] mt-[-60px] lg:mt-[10px] relative w-full lg:w-[90%] overflow-hidden flex flex-col">
       <SvgPath />
       <MainSection />
+      
       <div className="relative w-full">
-        <div className="w-full h-full absolute top-0 right-[2.5%] mt-[-30px]">
+        <div className="hidden lg:block w-full h-full absolute top-0 right-[2.5%] mt-[-30px]">
           <SvgPath3 />
         </div>
 
-        <div className="mt-[200px] px-[65px] flex flex-col gap-[100px]">
+        <div className="mt-[40px] lg:mt-[200px] px-[20px] lg:px-[65px] flex flex-col gap-[100px]">
           <CleanCode />
           <SeoOptimization />
           <ProjectHighlights />

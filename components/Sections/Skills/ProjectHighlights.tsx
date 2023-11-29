@@ -78,7 +78,7 @@ const ProjectHighlights = () => {
           ))}
         </div>
 
-        <div className="mr-[200px]">
+        <div className="mr-[200px] hidden lg:block">
           <Computer visibility={showFeatures} />
         </div>
       </div>
