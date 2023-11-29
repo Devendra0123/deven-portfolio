@@ -268,3 +268,7 @@
     rgba(240, 247, 255, 1) 100%
   );
 }
+
+.radial-gradient1{
+  background: radial-gradient(circle, rgba(228,240,240,0.8) 50%, rgba(246,213,142,0.1) 100%);
+}
