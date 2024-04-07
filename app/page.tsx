@@ -10,7 +10,7 @@ import SvgPath3 from "@/components/SvgPath/SvgPath3";
 export default async function Home() {
   
   return (
-    <main className="z-[-10] mt-[-60px] lg:mt-[10px] relative w-full lg:w-[90%] overflow-hidden flex flex-col">
+    <main className=" mt-[-60px] lg:mt-[10px] relative w-full lg:w-[90%] overflow-hidden flex flex-col">
       <SvgPath />
       <MainSection />
       
@@ -19,7 +19,9 @@ export default async function Home() {
           <SvgPath3 />
         </div>
 
-        <div className="mt-[40px] lg:mt-[200px] px-[20px] lg:px-[65px] flex flex-col gap-[100px]">
+        <div style={{
+          zIndex: 40
+        }} className="mt-[40px] lg:mt-[200px] px-[20px] lg:px-[65px] flex flex-col gap-[100px]">
           <CleanCode />
           <SeoOptimization />
           <ProjectHighlights />

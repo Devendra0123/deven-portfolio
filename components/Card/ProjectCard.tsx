@@ -16,9 +16,15 @@ const ProjectCard = ({ data }: Props) => {
 
   return (
     <div
-      className="relative overflow-hidden bg-transparent min-w-[250px] max-w-[250px] h-[320px] rounded-lg shadow-lg flex flex-col items-center gap-[20px] transition duration-150 ease-in"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="cursor-pointer relative overflow-hidden bg-transparent min-w-[250px] max-w-[250px] h-[320px] rounded-lg shadow-lg flex flex-col items-center gap-[20px] transition duration-150 ease-in"
+      onMouseEnter={() => {
+        console.log("is hovered")
+        setIsHovered(true)
+      }}
+      onMouseLeave={() => {
+        console.log("not hovered")
+        setIsHovered(false)
+      }}
     >
       <div className="mt-[20px] relative min-w-[130px] max-w-[130px] min-h-[130px] max-h-[130px] bg-light rounded-full">
         <Image

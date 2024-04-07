@@ -5,14 +5,14 @@ import { TbBrandBlogger } from "react-icons/tb";
 
 export const navLinks = [
   {
+    name: "Know me",
+    link: "/know-me",
+    icon: RiFilePaper2Line
+  },
+  {
     name: "Showcase",
     link: "/showcase",
     icon: PiSlideshowBold
-  },
-  {
-    name: "Tutorials & Guide",
-    link: "/tutorials-and-guide",
-    icon: RiFilePaper2Line
   },
   {
     name: "Templates",

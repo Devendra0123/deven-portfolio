@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React from "react";
-import ButtonWithIconAndText from "../ButtonWithIconAndText";
+import {Freehand} from "next/font/google";
+
+
+const freehand = Freehand({
+  subsets:["khmer", "latin"],
+  weight: ['400']
+});
 
 const LeftSection = () => {
   return (
@@ -38,11 +44,9 @@ const LeftSection = () => {
           <button className="bg-yellow1 py-[10px] px-[25px] font-medium">
             Hire Now
           </button>
-          <ButtonWithIconAndText
-            icon={"/play-btn.png"}
-            text="Play Video"
-            textStyle="underline"
-          />
+          {/* <button className={`${freehand.className} text-xl font-bold text-primaryBlue`}>
+             Resume
+          </button> */}
         </div>
       </div>
     </div>

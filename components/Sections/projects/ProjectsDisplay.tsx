@@ -51,7 +51,6 @@ const ProjectsDisplay = () => {
         </div>
       )}
 
-    
     </div>
   );
 };
