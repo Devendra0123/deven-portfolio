@@ -44,7 +44,7 @@ const ProjectsDisplay = () => {
       />
 
       {projectsData?.length > 0 && (
-        <div className="relative ml-[100px] mt-[50px] flex items-center gap-[50px] justify-start flex-wrap ">
+        <div className="relative ml-[80px] mt-[50px] grid grid-cols-3 gap-[50px] justify-start flex-wrap ">
           {projectsData.map((item, index) => (
             <ProjectCard key={index} data={item} />
           ))}

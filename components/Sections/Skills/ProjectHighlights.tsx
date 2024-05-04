@@ -50,7 +50,7 @@ const ProjectHighlights = () => {
         description="I have mentioned few key features that I am good at, but there are many more things that I am good at."
       />
 
-      <div className="relative ml-[100px] mt-[50px] flex items-center justify-between gap-[100px]">
+      <div className="relative ml-[80px] mt-[50px] flex items-center justify-between gap-[100px]">
         <div className="w-full grid grid-cols-2 gap-[50px] ">
           {keyProjectHighlights?.map(({ title, icon, description }, index) => (
             <div

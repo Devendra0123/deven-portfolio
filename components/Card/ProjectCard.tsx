@@ -16,7 +16,7 @@ const ProjectCard = ({ data }: Props) => {
 
   return (
     <div
-      className="cursor-pointer relative overflow-hidden bg-transparent min-w-[250px] max-w-[250px] h-[320px] rounded-lg shadow-lg flex flex-col items-center gap-[20px] transition duration-150 ease-in"
+      className="cursor-pointer relative overflow-hidden bg-transparent h-[320px] rounded-lg shadow-lg flex flex-col items-center gap-[20px] transition duration-150 ease-in"
       onMouseEnter={() => {
         console.log("is hovered")
         setIsHovered(true)
