@@ -20,11 +20,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MessageSection />
-        <Script
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-    const iframe = document.createElement("iframe");
+        <Script>
+          {`const iframe = document.createElement("iframe");
     const iframeStyles = (styleString) => {
     const style = document.createElement('style');
     style.textContent = styleString;
@@ -52,9 +49,8 @@ export default function RootLayout({
         iframe.contentWindow.postMessage("94ee4e80-1eb6-4907-8533-654467eed2af", "https://deven-chatbot.vercel.app/")
     })
         
-  `,
-  }}
-/>
+  `}
+</Script>
       </body>
     </html>
   );
