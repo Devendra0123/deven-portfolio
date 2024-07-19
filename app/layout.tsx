@@ -20,7 +20,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MessageSection />
-        <Script>
+        <Script id="my-script">
           {`const iframe = document.createElement("iframe");
     const iframeStyles = (styleString) => {
     const style = document.createElement('style');
