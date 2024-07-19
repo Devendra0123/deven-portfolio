@@ -15,11 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative w-full overflow-x-hidden bg-[#F0F7FF] py-[30px] font-poppins flex flex-col items-center">
-        <Navbar />
-        {children}
-        <MessageSection />
-
+      <head>
           <script>
 
     const iframe = document.createElement("iframe");
@@ -52,6 +48,11 @@ export default function RootLayout({
     })
 
   </script>
+      </head>
+      <body className="relative w-full overflow-x-hidden bg-[#F0F7FF] py-[30px] font-poppins flex flex-col items-center">
+        <Navbar />
+        {children}
+        <MessageSection />
       </body>
     </html>
   );
