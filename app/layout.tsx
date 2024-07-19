@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/Header/Navbar";
 import MessageSection from "@/components/Sections/MessageSecton";
+import ChatBot from "@/components/Chatbot";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MessageSection />
+        <ChatBot />
       </body>
     </html>
   );

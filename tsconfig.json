@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity/schemas/tutorials-and-guide", "app/api/revalidate.js",],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity/schemas/tutorials-and-guide", "app/api/revalidate.js", "components/Chatbot/index.jsx",],
   "exclude": ["node_modules"]
 }
